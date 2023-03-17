@@ -19,28 +19,30 @@ function gamePlaying(){
     }       
     
     // 페이지 전환 시 인벤토리가 오픈되어 있을 경우 오프
-    let gameInvenOnOff = document.querySelector(".gameInven");
-    gameInvenOnOff.classList.remove("active");
+    let gameinvenOnOff = document.querySelector(".gameArea .inven");
+    gameinvenOnOff.classList.remove("active");
 
-    let mainInvenOnOff = document.querySelector(".mainInven");
-    mainInvenOnOff.classList.remove("active");
+    let maininvenOnOff = document.querySelector(".homeArea .inven");
+    maininvenOnOff.classList.remove("active");
 }  
 
-// 인벤토리 on/off 버튼 설정
+// 인벤토리 온오프 버튼 설정
 function invenOnOff(){
-    let gameInvenOnOff = document.querySelector(".gameInven");
+    // 메인 화면에서 인벤토리 온오프
+    let maininvenOnOff = document.querySelector(".homeArea .inven");
 
-    if(gameInvenOnOff.classList.contains("active")){
-        gameInvenOnOff.classList.remove("active");
+    if(maininvenOnOff.classList.contains("active")){
+        maininvenOnOff.classList.remove("active");
     }else{
-        gameInvenOnOff.classList.add("active");
+        maininvenOnOff.classList.add("active");
+    }     
+
+    // 게임 화면에서 인벤토리 온오프
+    let gameinvenOnOff = document.querySelector(".gameArea .inven");
+
+    if(gameinvenOnOff.classList.contains("active")){
+        gameinvenOnOff.classList.remove("active");
+    }else{
+        gameinvenOnOff.classList.add("active");
     }   
-
-    let mainInvenOnOff = document.querySelector(".mainInven");
-
-    if(mainInvenOnOff.classList.contains("active")){
-        mainInvenOnOff.classList.remove("active");
-    }else{
-        mainInvenOnOff.classList.add("active");
-    }        
 }  

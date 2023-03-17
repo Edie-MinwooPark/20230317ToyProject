@@ -1,4 +1,4 @@
-/* 정비 화면 설정 */
+/* 메인 화면 설정 */
 .homeArea{
     width: 800px;
     height: 800px;
@@ -41,41 +41,6 @@
     cursor: pointer;
 }
 
-/* 인벤토리 설정 */
-.mainInven{
-    width: 500px;
-    height: 500px;
-    position: absolute;
-    
-    bottom: 150px;
-    padding: auto;
-    display: none;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    background-color: aquamarine;
-
-    border: 1px solid black;
-    border-radius: 20px;
-}
-
-/* 인벤토리 온오프 설정 */
-.mainInven.active{
-    display: flex;
-}
-
-/* 인벤토리 내 아이템 설정 */
-.mainInven .item{
-    width: 120px;
-    height: 120px;
-    border: 1px solid black;
-    margin: 10px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    background-color: white;
-}
-
 /* 전투 화면 기본 설정 */
 .gameArea{
     width: 800px;
@@ -83,7 +48,7 @@
     position: relative;
     margin: auto;
     display: none;
-
+    
     border: 1px solid black;
     border-radius: 30px;
 }
@@ -120,12 +85,11 @@
 }
 
 /* 인벤토리 설정 */
-.gameInven{
+.inven{
     width: 500px;
     height: 500px;
-    position: absolute;
-    right: 250px;
-    bottom: 50px;
+    position: absolute;    
+    bottom: 150px;
     padding: auto;
     display: none;
     flex-wrap: wrap;
@@ -137,13 +101,43 @@
     border-radius: 20px;
 }
 
+/* 메인 화면 인벤토리 위치 설정 */
+.homeArea .inven{
+    position: absolute;    
+    bottom: 150px;
+}
+
+/* 전투 화면 인벤토리 위치 설정 */
+.gameArea .inven{
+    position: absolute;
+    right: 250px;
+    bottom: 50px;
+}
+
 /* 인벤토리 온오프 설정 */
-.gameInven.active{
+.homeArea .inven.active{
     display: flex;
 }
 
 /* 인벤토리 내 아이템 설정 */
-.gameInven .item{
+.homeArea .inven .item{
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: white;
+}
+
+/* 인벤토리 온오프 설정 */
+.gameArea .inven.active{
+    display: flex;
+}
+
+/* 인벤토리 내 아이템 설정 */
+.gameArea .inven .item{
     width: 120px;
     height: 120px;
     border: 1px solid black;

@@ -8,7 +8,42 @@
     <link rel="stylesheet" href="./game.css">
 </head>
 <body>
-    
+    <div class="homeArea">
+        <div class="homeBtnGroup">
+            <button class="gameStart" onclick="gamePlaying()">게임 시작</button>
+            <button class="mainInvenBtn" onclick="invenOnOff()">인벤토리 열기</button>
+            <button class="shopBtn" onclick="">상점</button>
+        </div>
+        <div class="mainInven">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
+    <div class="gameArea">
+        <div class="actionBtnGroup">
+            <button class="attackBtn" onclick="">공격하기</button>
+            <button class="InvenBtn" onclick="invenOnOff()">인벤토리 열기</button>
+            <button class="runBtn" onclick="gamePlaying()">도망가기</button>
+        </div>
+        <div class="gameInven">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
 </body>
 <script src="./game.js"></script>
 </html>

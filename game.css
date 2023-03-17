@@ -1,0 +1,155 @@
+/* 정비 화면 설정 */
+.homeArea{
+    width: 800px;
+    height: 800px;
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+/* 메인 화면 온오프 설정 */
+.homeArea.active{
+    display: none;
+}
+
+/* 홈 버튼 설정 */
+.homeBtnGroup{
+    width: 750px;
+    height: 80px;
+    position: absolute;
+    bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    border-radius: 15px;
+
+    border: 1px solid black;
+}
+
+/* 홈 버튼 크기 설정 */
+.homeBtnGroup button{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    margin: auto;
+    cursor: pointer;
+}
+
+/* 인벤토리 설정 */
+.mainInven{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    
+    bottom: 150px;
+    padding: auto;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+/* 인벤토리 온오프 설정 */
+.mainInven.active{
+    display: flex;
+}
+
+/* 인벤토리 내 아이템 설정 */
+.mainInven .item{
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: white;
+}
+
+/* 전투 화면 기본 설정 */
+.gameArea{
+    width: 800px;
+    height: 800px;
+    position: relative;
+    margin: auto;
+    display: none;
+
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+/* 전투 화면 on 시 */
+.gameArea.active{
+    display: block;
+}
+
+/* 전투 시 사용 버튼 그룹 */
+.actionBtnGroup{
+    width: 150px;
+    height: 200px;
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    border-radius: 15px;
+
+    border: 1px solid black;
+}
+
+/* 전투 버튼 설정 */
+.actionBtnGroup button{
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    margin: auto;
+    cursor: pointer;
+}
+
+/* 인벤토리 설정 */
+.gameInven{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    right: 250px;
+    bottom: 50px;
+    padding: auto;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+/* 인벤토리 온오프 설정 */
+.gameInven.active{
+    display: flex;
+}
+
+/* 인벤토리 내 아이템 설정 */
+.gameInven .item{
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: white;
+}

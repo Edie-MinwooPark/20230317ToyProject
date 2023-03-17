@@ -21,6 +21,8 @@ let monster5 = new createmonster("rabbit", 100, 10, 2, 10);
 // 몬스터 배열
 let monster = [monster1, monster2, monster3, monster4, monster5];
 
+let monsterSelect = [];
+
 // 화면 on/off 버튼 설정
 function gamePlaying(){
     //전투 화면 온오프
@@ -50,6 +52,8 @@ function gamePlaying(){
 
     // 몬스터 생성
     faceToMonster();
+
+    fight();
 }  
 
 // 인벤토리 온오프 버튼 설정
@@ -84,7 +88,7 @@ function faceToMonster(){
     
     let random = Math.floor(Math.random() * monster.length)
     
-    let monsterSelect = monster[random];
+    monsterSelect = monster[random];
     
     text = [`${monsterSelect.name} : 이름`, `${monsterSelect.hp} : 체력`, `${monsterSelect.atk} : 공격력`, `${monsterSelect.def} : 방어력`];
 
@@ -94,8 +98,6 @@ function faceToMonster(){
     mondef.innerHTML = `${text[3]}`  
     
     // 플레이어 정보 표기
-    playerText = [];
-
     let playername = document.querySelector(".name");
     let playerhp = document.querySelector(".hp");
     let playeratk = document.querySelector(".atk");
@@ -107,10 +109,24 @@ function faceToMonster(){
     playerdef.innerHTML = `방어력 : ${player[3]}`;
 }
 
-// function fight(){
-//     let count = 1 ;
+function fight(){
+    let count = 1 ;
+    let monhp = document.querySelector(".msthp");
+    let playerhp = document.querySelector(".hp");
+    text = "";
+    console.log(monsterSelect);
+    console.log(player);
+    for (let i = 0; i < 2; i++) {
+        if(count % 2 == 1){
+            monsterSelect[1] = monsterSelect[1] - player[2] + monsterSelect[3];
+        }else{
+            player[1] = player[1] - monsterSelect[2] + player[3];
+        }
+        
+        count++;        
+    }        
 
-//     while(){
-
-//     }
-// }
+    text = `${monsterSelect.hp} : 체력`;
+    monhp.innerHTML = `${text}`;
+    playerhp.innerHTML = `체력 : ${player[1]}`;
+}

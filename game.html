@@ -10,7 +10,7 @@
 <body>
     <div class="homeArea">
         <div class="homeBtnGroup">
-            <button class="gameStart" onclick="gamePlaying()">게임 시작</button>
+            <button class="gameStart" onclick="gamePlaying()">전투 시작</button>
             <button class="mainInvenBtn" onclick="invenOnOff()">인벤토리 열기</button>
             <button class="shopBtn" onclick="">상점</button>
             <button class="toLogInPage" onclick="">게임 종료</button>
@@ -28,6 +28,33 @@
         </div>
     </div>
     <div class="gameArea">
+        <div class = profile>
+            <div class="meprofile">
+                <span class = "mephoto"> </span>
+                <div class = "line my">
+                    <div class = "bar name">플레이어</div>
+                    <div class = "bar hp">체력</div>
+                    <div class = "bar atk">공격력</div>
+                    <div class = "bar def">방어력</div>
+                </div>
+            </div>
+            
+            <div class="monsterprofile">
+                <span class = "monsterphoto"> </span>
+                <div class = "line mon">
+                    <div class = "bar mstname">몬스터</div>
+                    <div class = "bar msthp">체력</div>
+                    <div class = "bar mstatk">공격력</div>
+                    <div class = "bar mstdef">방어력</div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="me">플레이어</div>
+            <div class="monster">몬스터</div>
+        </div>
+
         <div class="actionBtnGroup">
             <button class="attackBtn" onclick="">공격하기</button>
             <button class="InvenBtn" onclick="invenOnOff()">인벤토리 열기</button>
@@ -45,6 +72,7 @@
             <div class="item"></div>
         </div>
     </div>
+    
 </body>
 <script src="./game.js"></script>
 </html>

@@ -54,7 +54,7 @@
     height: 700px;
     position: relative;
     margin: auto;
-    display: none;    
+    display: none;
     background-image: url(https://media.discordapp.net/attachments/1086226888919359492/1086280847486881813/back_space3.jpg?width=717&height=403);
     background-repeat: no-repeat;
     background-position: center;
@@ -65,6 +65,22 @@
 /* 전투 화면 on 시 */
 .gameArea.active{
     display: block;
+}
+
+/* 몬스터 조우 버튼 설정 */
+.matching{
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 100px;
+    font-size: 24px;
+}
+
+.matching.active{
+    display: none;
 }
 
 /* 전투 시 사용 버튼 그룹 */
@@ -161,7 +177,7 @@
 .profile{
     width: 100%;
     height: 150px;
-    display: flex;
+    display: none;
     justify-content: space-between;
 }
 
@@ -225,7 +241,7 @@
     background-color: white;
     width: 150px;
     height: 150px;
-    display: block;    
+    display: none;    
     position: absolute;
     text-align: center;
     top: 35%;
@@ -236,4 +252,12 @@
 }
 .monster{
     right: 10%;
+}
+
+/* 몬스터 발견 버튼 클릭 시 정보 활성화 */
+.profile.active{
+    display: flex;
+}
+.me.active, .monster.active{
+    display: block;
 }

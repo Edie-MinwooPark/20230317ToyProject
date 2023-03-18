@@ -43,7 +43,7 @@
 }
 
 /* 로그인 페이지 전환용 버튼 */
-.toLogInPage a{
+.homeBtnGroup a{
     color: black;
     text-decoration: none;
 }

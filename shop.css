@@ -29,6 +29,10 @@ h1{
     text-align: center;
     padding-top: 5px;
 }
+#tothemain a{
+    text-decoration: none;
+    color: black;
+}
 #shoppingbox{
     border: 1px solid black;
     height: 500px;

@@ -210,8 +210,32 @@
     position: absolute;
     border-radius: 10px;    
 }
-.monsterphoto{
+.mephoto{
     background-image: url("./profile_image/player_profile.jpg");
+    background-size: cover;  
+}
+.monsterphoto{
+    position: absolute;
+    right: 0;
+}
+.image1{
+    background-image: url("./monsterimage/icons8-robot-2-100.png");
+    background-size: cover;  
+}
+.image2{
+    background-image: url("./monsterimage/icons8-외계인-48.png");
+    background-size: cover;  
+}
+.image3{
+    background-image: url("./monsterimage/icons8-space-50.png");
+    background-size: cover;  
+}
+.image4{
+    background-image: url("./monsterimage/icons8-trash-pile-50.png");
+    background-size: cover;  
+}
+.image5{
+    background-image: url("./monsterimage/icons8-달-위성-64.png");
     background-size: cover;  
 }
 .line{
@@ -243,8 +267,8 @@
 /* 플레이어 몬스터 이미지 */
 .me, .monster{
     background-color: white;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     display: none;    
     position: absolute;
     text-align: center;
@@ -253,6 +277,8 @@
 }
 .me{
     left: 10%;
+    background-image: url("./profile_image/player_profile.jpg");
+    background-size: cover;  
 }
 .monster{
     right: 10%;

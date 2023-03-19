@@ -1,0 +1,266 @@
+/* 메인 화면 설정 */
+.homeArea{
+    width: 1000px;
+    height: 700px;
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    background-image: url(https://media.discordapp.net/attachments/1086226888919359492/1086280670483062925/back_space2.jpg?width=717&height=403);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 130%;
+    opacity: 0.9;
+    border-radius: 30px;
+}
+
+/* 메인 화면 온오프 설정 */
+.homeArea.active{
+    display: none;
+}
+
+/* 홈 버튼 설정 */
+.homeBtnGroup{
+    width: 950px;
+    height: 80px;
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* 홈 버튼 크기 설정 */
+.homeBtnGroup button{
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    margin: auto;
+    cursor: pointer;
+    margin: 0 20px;
+}
+
+/* 로그인 페이지 전환용 버튼 */
+.homeBtnGroup a{
+    color: black;
+    text-decoration: none;
+}
+
+/* 전투 화면 기본 설정 */
+.gameArea{
+    width: 1000px;
+    height: 700px;
+    position: relative;
+    margin: auto;
+    display: none;
+    background-image: url(https://media.discordapp.net/attachments/1086226888919359492/1086280847486881813/back_space3.jpg?width=717&height=403);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 130%;
+    border-radius: 30px;
+}
+
+/* 전투 화면 on 시 */
+.gameArea.active{
+    display: block;
+}
+
+/* 몬스터 조우 버튼 설정 */
+.matching{
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 100px;
+    font-size: 24px;
+}
+
+.matching.active{
+    display: none;
+}
+
+/* 전투 시 사용 버튼 그룹 */
+.actionBtnGroup{
+    width: 150px;
+    height: 200px;
+    position: absolute;
+    right: 50px;
+    bottom: 20px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    border-radius: 15px;
+
+    border: 1px solid black;
+}
+
+.actionBtnGroup.active{
+    display: flex;
+}
+
+/* 전투 버튼 설정 */
+.actionBtnGroup button{
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    margin: auto;
+    cursor: pointer;
+}
+
+/* 인벤토리 설정 */
+.inven{
+    width: 500px;
+    height: 500px;
+    position: absolute;    
+    bottom: 150px;
+    padding: auto;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+/* 메인 화면 인벤토리 위치 설정 */
+.homeArea .inven{
+    position: absolute;    
+    bottom: 150px;
+}
+
+/* 전투 화면 인벤토리 위치 설정 */
+.gameArea .inven{
+    position: absolute;
+    right: 250px;
+    bottom: 50px;
+}
+
+/* 인벤토리 온오프 설정 */
+.homeArea .inven.active{
+    display: flex;
+}
+
+/* 인벤토리 내 아이템 설정 */
+.homeArea .inven .item{
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: white;
+}
+
+/* 인벤토리 온오프 설정 */
+.gameArea .inven.active{
+    display: flex;
+}
+
+/* 인벤토리 내 아이템 설정 */
+.gameArea .inven .item{
+    width: 120px;
+    height: 120px;
+    border: 1px solid black;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: white;
+}
+
+/* 전투 기본 정보 설정 */
+.profile{
+    width: 100%;
+    height: 150px;
+    display: none;
+    justify-content: space-between;
+}
+
+/* 플레이어, 몬스터 정보창 설정 */
+.meprofile, .monsterprofile{
+    position: absolute;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 400px;
+    height: 150px;
+    position: fixed;
+    top:20px;
+    position: relative;
+    margin: 0;
+    border-radius: 10px;
+}
+.meprofile{
+    left: 20px;
+}
+.monsterprofile{
+    right: 20px;
+}
+.mephoto, .monsterphoto{
+    background-color: white;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 10px;    
+}
+.monsterphoto{
+    right: 0px;    
+}
+.line{
+    width: 200px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+}
+.my{
+    right: 5px;
+}
+.mon{
+    left: 5px;
+}
+.bar{
+    background-color: gray;
+    width: 200px;
+    height: 25px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+.mon .bar{
+    text-align: right;
+}
+
+/* 플레이어 몬스터 이미지 */
+.me, .monster{
+    background-color: white;
+    width: 150px;
+    height: 150px;
+    display: none;    
+    position: absolute;
+    text-align: center;
+    top: 35%;
+    border-radius: 10px;
+}
+.me{
+    left: 10%;
+}
+.monster{
+    right: 10%;
+}
+
+/* 몬스터 발견 버튼 클릭 시 정보 활성화 */
+.profile.active{
+    display: flex;
+}
+.me.active, .monster.active{
+    display: block;
+}

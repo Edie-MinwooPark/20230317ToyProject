@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./game.css">
+</head>
+<body>
+    <div class="homeArea">
+        <div class="homeBtnGroup">
+            <button class="gameStart" onclick="gamePlaying();">전투 시작</button>
+            <button class="mainInvenBtn" onclick="invenOnOff();">인벤토리 열기</button>
+            <div>
+                <a href="./shop.html">
+
+                    <button class="shopBtn">상점</button>
+                </a>
+            </div>
+
+            <div>
+                <a href="./index.html">
+
+                    <button class="toLogInPage">게임 종료</button>
+                </a>
+
+            </div>
+        </div>
+        <div class="inven">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
+    <div class="gameArea">
+        <div class = profile>
+            <div class="meprofile">
+                <span class = "mephoto"> </span>
+                <div class = "line my">
+                    <div class = "bar name">플레이어</div>
+                    <div class = "bar hp">체력</div>
+                    <div class = "bar atk">공격력</div>
+                    <div class = "bar def">방어력</div>
+                </div>
+            </div>
+            
+            <div class="monsterprofile">
+                <span class = "monsterphoto"> </span>
+                <div class = "line mon">
+                    <div class = "bar mstname">몬스터</div>
+                    <div class = "bar msthp">체력</div>
+                    <div class = "bar mstatk">공격력</div>
+                    <div class = "bar mstdef">방어력</div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="me">플레이어</div>
+            <div class="monster">몬스터</div>
+        </div>
+        
+        <div>
+            <button class="matching" onclick="faceToMonster();">몬스터 발견!</button>
+        </div>
+
+        <div class="actionBtnGroup">
+            <button class="attackBtn" onclick="fight();">공격하기</button>
+            <button class="InvenBtn" onclick="invenOnOff();">인벤토리 열기</button>
+            <button class="runBtn" onclick="gamePlaying();">도망가기</button>
+        </div>
+        <div class="inven">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
+    
+</body>
+<script src="./game.js"></script>
+</html>

@@ -21,7 +21,6 @@ let monster5 = new createmonster("rabbit", 100, 10, 2, 10);
 // 몬스터 배열
 let monster = [monster1, monster2, monster3, monster4, monster5];
 
-
 // 몬스터 랜덤 인덱스 저장소
 let monRandom;
 
@@ -111,6 +110,16 @@ function faceToMonster(){
     let actionBtn = document.querySelector(".actionBtnGroup");
     actionBtn.classList.add("active");  
 
+    let attackRes = document.querySelector(".attackResult");
+    attackRes.classList.add("active");  
+    
+    // 전투 창 초기화
+    let playTurn = document.querySelector(".playerTurn");
+    let monTurn = document.querySelector(".monsterTurn");
+
+    playTurn.innerHTML = ``;
+    monTurn.innerHTML = ``;
+
     // 몬스터 생성    
     let monname = document.querySelector(".mstname");
     let monhp = document.querySelector(".msthp");
@@ -140,14 +149,20 @@ function faceToMonster(){
     playerdef.innerHTML = `방어력 : ${player[3]}`;
 }
 
+// 전투 진행
 function fight(){
     let count = 1 ;
     let monhp = document.querySelector(".msthp");
     let playerhp = document.querySelector(".hp");
-    text = "";
+    text = "";  // 프로필 문구 초기화
 
+    // 크리티컬 설정 및 추가 문구
     let playerCri = Math.floor(Math.random() * 10);
     let monCri = Math.floor(Math.random() * 10);
+    playAtkText = "";  // 플레이어 공격 문구 초기화
+    monAtkText = "";  // 몬스터 공격 문구 초기화
+    playDemage = "";  // 플레이어 받은 데미지 문구 초기화
+    monDemage = "";   // 몬스터 받은 데미지 문구 초기화
 
     console.log(playerCri);
     console.log(monCri);
@@ -156,23 +171,39 @@ function fight(){
         if(count % 2 == 1){
             if(playerCri >= 5){
                 monsterSelect.hp = monsterSelect.hp - player[2] * 2 + monsterSelect.def;
+                playAtkText = `크리티컬 적용!<br> ${player[2] * 2}`;
+                monDemage = `${player[2] * 2 - monsterSelect.def}`;
             }else{
                 monsterSelect.hp = monsterSelect.hp - player[2] + monsterSelect.def;
+                playAtkText = `${player[2]}`;
+                monDemage = `${player[2] - monsterSelect.def}`;
             }
         }else{
             if(monCri >= 5){
-                player[1] = player[1] - monsterSelect.atk * 2 + player[3];                
+                player[1] = player[1] - monsterSelect.atk * 2 + player[3];      
+                monAtkText = `크리티컬 적용!<br> ${monsterSelect.atk * 2}`;     
+                playDemage = `${monsterSelect.atk * 2 - player[3]}`;     
             }else{
                 player[1] = player[1] - monsterSelect.atk + player[3];
+                monAtkText = `${monsterSelect.atk}`;  
+                playDemage = `${monsterSelect.atk - player[3]}`;
             }
         }
         
         count++;        
     }
-
+    
     console.log(player);
     console.log(monsterSelect);
 
+    // 전투 회당 결과창 호출
+    let playTurn = document.querySelector(".playerTurn");
+    let monTurn = document.querySelector(".monsterTurn");
+
+    playTurn.innerHTML = `플레이어 공격!<br> ${playAtkText}으로 공격!<br> 몬스터 체력 ${monDemage} 감소!`;
+    monTurn.innerHTML = `몬스터 공격!<br> ${monAtkText}으로 공격!<br> 플레이어 체력 ${playDemage} 감소!`;
+
+    // 전투 결과 프로필 적용
     text = `${monsterSelect.hp} : 체력`;
     monhp.innerHTML = `${text}`;
     playerhp.innerHTML = `체력 : ${player[1]}`;
@@ -182,6 +213,7 @@ function fight(){
     }
 }
 
+// 체력이 줄었을 때 결과 비교 및 보상
 function afterFight(){
     if(player[0] <= 0){        
         alert(`패배하셨습니다. 마을로 돌아갑니다...`)
@@ -208,9 +240,6 @@ function afterFight(){
     
     // 몬스터 리셋
     monster[monRandom] = monInit[monRandom];
-
-    console.log(monster[monRandom]);
-    console.log(monInit[monRandom]);
         
     // 메인 화면과 전투 화면 스위칭 및 프로필 오프
     let gamePlaying = document.querySelector(".gameArea");
@@ -233,20 +262,7 @@ function afterFight(){
     
     let actionBtn = document.querySelector(".actionBtnGroup");
     actionBtn.classList.remove("active");  
-}
 
-function openimage(){
-    let image = document.querySelector(".monsterphoto")
-//     if(monsterSelect == monster[0]){
-//         image.classList.add("image1")
-// }else if(monsterSelect == monster[1]){
-//     image.classList.add("image1")
-// }else if(monsterSelect == monster[2]){
-//     image.classList.add("image1")
-// }else if(monsterSelect == monster[3]){
-//     image.classList.add("image1")
-// }else {
-//     image.classList.add("image1")
-// }
-image.classList.add("image1")
+    let attackRes = document.querySelector(".attackResult");
+    attackRes.classList.remove("active");  
 }

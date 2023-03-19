@@ -81,34 +81,6 @@
     display: none;
 }
 
-/* 공격 결과 호출 창 */
-.attackResult{
-    width: 250px;
-    height: 220px;
-    background-color: black;
-    color: white;
-    position: absolute;
-    display: none;
-    top: 46%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-}
-.attackResult.active{
-    display: block;
-}
-
-.attackResult .playerTurn,
-.attackResult .monsterTurn{
-    margin: 5px;
-    padding: 5px;
-    width: 230px;
-    height: 90px;
-}
-.attackResult .monsterTurn{
-    border-top: 0.5px solid white;
-}
-
 /* 전투 시 사용 버튼 그룹 */
 .actionBtnGroup{
     width: 150px;

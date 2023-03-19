@@ -34,9 +34,20 @@
     height: 200px;
     position: fixed;
 }
+.mephoto{
+    background-image: url("./monsterimage/icons8-robot-2-100.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .monsterphoto{
     position: fixed;
-    left: 2269px;
+    right: 0;
+    display: block;
+}
+.image1{
+    background-image: url("./monsterimage/icons8-robot-2-100.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .line{
     width: 300px;
@@ -313,9 +324,11 @@
     height: 25px;
     margin-bottom: 10px;
     border-radius: 15px;
+    text-align: center;
 }
 .mon .bar{
     text-align: right;
+    text-align: center;
 }
 
 /* 플레이어 몬스터 이미지 */
@@ -342,4 +355,9 @@
 }
 .me.active, .monster.active{
     display: block;
+}
+
+.image{
+    width: 150px;
+    height: 150xp;
 }

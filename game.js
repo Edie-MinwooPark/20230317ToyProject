@@ -234,3 +234,19 @@ function afterFight(){
     let actionBtn = document.querySelector(".actionBtnGroup");
     actionBtn.classList.remove("active");  
 }
+
+function openimage(){
+    let image = document.querySelector(".monsterphoto")
+//     if(monsterSelect == monster[0]){
+//         image.classList.add("image1")
+// }else if(monsterSelect == monster[1]){
+//     image.classList.add("image1")
+// }else if(monsterSelect == monster[2]){
+//     image.classList.add("image1")
+// }else if(monsterSelect == monster[3]){
+//     image.classList.add("image1")
+// }else {
+//     image.classList.add("image1")
+// }
+image.classList.add("image1")
+}

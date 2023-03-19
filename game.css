@@ -26,7 +26,6 @@
     position: absolute;
     bottom: 30px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     
@@ -39,6 +38,7 @@
     border-radius: 10px;
     margin: auto;
     cursor: pointer;
+    margin: 0 20px;
 }
 
 /* 로그인 페이지 전환용 버튼 */
@@ -77,9 +77,36 @@
     height: 100px;
     font-size: 24px;
 }
-
 .matching.active{
     display: none;
+}
+
+/* 공격 결과 호출 창 */
+.attackResult{
+    width: 250px;
+    height: 220px;
+    background-color: black;
+    color: white;
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+}
+.attackResult.active{
+    display: block;
+}
+
+.attackResult .playerTurn,
+.attackResult .monsterTurn{
+    margin: 5px;
+    padding: 5px;
+    width: 230px;
+    height: 90px;
+}
+.attackResult .monsterTurn{
+    border-top: 0.5px solid white;
 }
 
 /* 전투 시 사용 버튼 그룹 */
@@ -98,7 +125,6 @@
 
     border: 1px solid black;
 }
-
 .actionBtnGroup.active{
     display: flex;
 }

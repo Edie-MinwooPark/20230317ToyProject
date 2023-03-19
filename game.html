@@ -12,8 +12,17 @@
         <div class="homeBtnGroup">
             <button class="gameStart" onclick="gamePlaying();">전투 시작</button>
             <button class="mainInvenBtn" onclick="invenOnOff();">인벤토리 열기</button>
-            <button class="shopBtn"><a href="./shop.html">상점</a></button>
-            <button class="toLogInPage"><a href="./index.html">게임 종료</a></button>
+            <div>
+                <a href="./shop.html">
+                    <button class="shopBtn">상점</button>
+                </a>
+            </div>
+
+            <div>
+                <a href="./index.html">
+                    <button class="toLogInPage">게임 종료</button>
+                </a>
+            </div>
         </div>
         <div class="inven">
             <div class="item"></div>
@@ -48,6 +57,11 @@
                     <div class = "bar mstdef">방어력</div>
                 </div>
             </div>
+        </div>
+
+        <div class="attackResult">
+            <p class="playerTurn"></p>
+            <p class="monsterTurn"></p>
         </div>
 
         <div>

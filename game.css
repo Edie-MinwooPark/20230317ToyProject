@@ -5,7 +5,6 @@
     position: relative;
     margin: auto;
     display: flex;
-    /* display: none; */
     justify-content: center;
     background-image: url(https://media.discordapp.net/attachments/1086226888919359492/1086280670483062925/back_space2.jpg?width=717&height=403);
     background-repeat: no-repeat;
@@ -90,7 +89,7 @@
     position: absolute;
     right: 50px;
     bottom: 20px;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -98,6 +97,10 @@
     border-radius: 15px;
 
     border: 1px solid black;
+}
+
+.actionBtnGroup.active{
+    display: flex;
 }
 
 /* 전투 버튼 설정 */

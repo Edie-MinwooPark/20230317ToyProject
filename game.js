@@ -54,6 +54,22 @@ function gamePlaying(){
 
     let maininvenOnOff = document.querySelector(".homeArea .inven");
     maininvenOnOff.classList.remove("active");
+
+    // 전투 화면에서 도망가기 눌렀을 때 프로필 오프
+    let profilePopup = document.querySelector(".profile");
+    profilePopup.classList.remove("active");
+
+    let meImg = document.querySelector(".me");
+    meImg.classList.remove("active");
+    
+    let monImg = document.querySelector(".monster");
+    monImg.classList.remove("active");
+    
+    let matchingBtn = document.querySelector(".matching");
+    matchingBtn.classList.remove("active");    
+    
+    let actionBtn = document.querySelector(".actionBtnGroup");
+    actionBtn.classList.remove("active");  
 }  
 
 // 인벤토리 온오프 버튼 설정
@@ -91,6 +107,9 @@ function faceToMonster(){
     
     let matchingBtn = document.querySelector(".matching");
     matchingBtn.classList.add("active");
+
+    let actionBtn = document.querySelector(".actionBtnGroup");
+    actionBtn.classList.add("active");  
 
     // 몬스터 생성    
     let monname = document.querySelector(".mstname");
@@ -213,4 +232,7 @@ function afterFight(){
     
     let matchingBtn = document.querySelector(".matching");
     matchingBtn.classList.remove("active");    
+    
+    let actionBtn = document.querySelector(".actionBtnGroup");
+    actionBtn.classList.remove("active");  
 }

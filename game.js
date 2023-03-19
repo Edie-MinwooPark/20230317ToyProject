@@ -197,8 +197,6 @@ function afterFight(){
 
     // 플레이어 리셋    
     player[1] = playerInit[1];
-    player[2] = playerInit[2];
-    player[3] = playerInit[3];
     
     // 몬스터 초기화 배열
     let monInit1 = new createmonster("buzz", 100, 10, 2, 10);

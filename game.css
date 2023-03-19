@@ -260,9 +260,10 @@
     height: 25px;
     margin-bottom: 10px;
     border-radius: 15px;
+    text-align: center;
 }
 .mon .bar{
-    text-align: right;
+    text-align: center;
 }
 
 /* 플레이어 몬스터 이미지 */

@@ -59,4 +59,4 @@ function buyItem (button,itemcontent){
     }
 }
 
-jango();
+// jango();///

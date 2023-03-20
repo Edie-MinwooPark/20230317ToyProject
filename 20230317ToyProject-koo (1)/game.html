@@ -8,9 +8,20 @@
     <link rel="stylesheet" href="./game.css">
 </head>
 <body>
-    <div class = gamepage>
-    </div>
     <div class="homeArea">
+        <div class="status">
+            <div>
+                <div>플레이어 사진</div>
+                <div>레벨 | 경험치 </div>
+            </div>
+            <div>
+                <div>체력</div>
+                <div>공격력</div>
+                <div>방어력 </div>
+                <div>소지금</div>
+            </div>
+        </div>
+
         <div class="homeBtnGroup">
             <button class="gameStart" onclick="gamePlaying();">전투 시작</button>
             <button class="mainInvenBtn" onclick="invenOnOff();">인벤토리 열기</button>
@@ -51,8 +62,7 @@
             </div>
             
             <div class="monsterprofile">
-                <span class = "monsterphoto">
-                </span>
+                <span class = "monsterphoto"> </span>
                 <div class = "line mon">
                     <div class = "bar mstname">몬스터</div>
                     <div class = "bar msthp">체력</div>

@@ -61,11 +61,3 @@ function buyItem (button,itemcontent){
 }
 
 jango();
-
-
-//돌아가기 버튼 클릭시 함수
-
-function tothemain(){
-window.location.href = 'www.naver.com';
-}
-

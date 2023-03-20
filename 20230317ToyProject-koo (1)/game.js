@@ -1,15 +1,21 @@
 // 플레이어 기본 정보
 // 순서대로 레벨, 체력, 공격력, 방어력, 경험치
-let player = [1, 120, 15, 5, 0];
+let player = [1, 120, 15, 5, 0, 500];
+let hpToNextLevel = 120;
+let atkToNextLevel = 15;
+let defToNextLevel = 5;
+let neededExp = 50;
+
 
 // 몬스터 생성 함수
-function createmonster(name, hp, atk, def, gift, imageUrl){
+function createmonster(name, hp, atk, def, gift, imageUrl,wanted){
     this.name = name;
     this.hp = hp;
     this.atk = atk;
     this.def = def;
     this.gift = gift;
     this.imageUrl = imageUrl;
+    this.wanted = wanted;
 }
 
 // 몬스터 이미지
@@ -22,11 +28,11 @@ let monsterProfile = [
 ]
 
 // 몬스터 정보
-let monster1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
-let monster2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1]);
-let monster3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2]);
-let monster4 = new createmonster("trash", 80, 20, 5, 20, monsterProfile[3]);
-let monster5 = new createmonster("rabbit", 100, 10, 2, 10, monsterProfile[4]);
+let monster1 = new createmonster("buzz", 80, 10, 2, 10, monsterProfile[0],10);
+let monster2 = new createmonster("alien", 100, 15, 1, 5, monsterProfile[1],15);
+let monster3 = new createmonster("would you", 120, 20, 7, 15, monsterProfile[2],18);
+let monster4 = new createmonster("trash", 150, 20, 30, 9, monsterProfile[3],23);
+let monster5 = new createmonster("rabbit", 200, 10, 40, 20, monsterProfile[4],30);
 
 // 몬스터 배열
 let monster = [monster1, monster2, monster3, monster4, monster5];
@@ -40,61 +46,6 @@ let monsterSelect;
 
 // 화면 on/off 버튼 설정
 function gamePlaying(){
-    //전투 화면 온오프
-    let gamePlaying = document.querySelector(".gameArea");
-
-    if(gamePlaying.classList.contains("active")){
-        gamePlaying.classList.remove("active");
-        document.querySelector('.plLevel').innerHTML = "레벨 : " + player[0];
-        document.querySelector('.plExp').innerHTML = "경험치 : " + player[4];
-
-        document.querySelector('.mainHp').innerHTML = "체력 : " + player[1];
-        document.querySelector('.mainAtk').innerHTML = "공격력 : " + player[2];
-        document.querySelector('.mainArmor').innerHTML = "방어력 : " + player[3];
-        document.querySelector('.mainCash').innerHTML = "소지금 : " + player[5];
-    }else{
-        gamePlaying.classList.add("active");
-    }    
-
-    // 홈 화면 온오프
-    let mainPage = document.querySelector(".homeArea");
-
-    if(mainPage.classList.contains("active")){
-        mainPage.classList.remove("active");
-    }else{
-        mainPage.classList.add("active");
-    }       
-
-    // 페이지 전환 시 인벤토리가 오픈되어 있을 경우 오프
-    let gameinvenOnOff = document.querySelector(".gameArea .inven");
-    gameinvenOnOff.classList.remove("active");
-
-    let maininvenOnOff = document.querySelector(".homeArea .inven");
-    maininvenOnOff.classList.remove("active");
-
-    let shopOnOff = document.querySelector(".shop");
-    shopOnOff.classList.remove("active");
-}  
-
-
-function gameEscape(){
-    // 플레이어 초기화 변수
-    let playerInit = [1, 120, 15, 5];
-    
-    // 플레이어 리셋    
-    player[1] = playerInit[1];
-    
-    // 몬스터 초기화 배열
-    let monInit1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
-    let monInit2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1]);
-    let monInit3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2]);
-    let monInit4 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[3]);
-    let monInit5 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[4]);
-    let monInit = [monInit1, monInit2, monInit3, monInit4, monInit5];
-    
-    // 몬스터 리셋
-    monster[monRandom] = monInit[monRandom];
-
     //전투 화면 온오프
     let gamePlaying = document.querySelector(".gameArea");
 
@@ -246,6 +197,7 @@ function faceToMonster(){
 
 // 전투 진행
 function fight(){
+    let count = 1 ;
     let monhp = document.querySelector(".msthp");
     let playerhp = document.querySelector(".hp");
     text = "";  // 프로필 문구 초기화
@@ -258,178 +210,130 @@ function fight(){
     playDemage = "";  // 플레이어 받은 데미지 문구 초기화
     monDemage = "";   // 몬스터 받은 데미지 문구 초기화 
 
-    // 플레이어 공격
-    setTimeout(function(){
-        if(playerCri >= 5){
-            monsterSelect.hp = monsterSelect.hp - player[2] * 2 + monsterSelect.def;
-            playAtkText = `크리티컬 적용!<br> ${player[2] * 2}`;
-            monDemage = `${player[2] * 2 - monsterSelect.def}`;
+    console.log(playerCri);
+    console.log(monCri);
+
+    for (let i = 0; i < 2; i++) {
+        if(count % 2 == 1){
+            if(playerCri >= 5){
+                monsterSelect.hp = monsterSelect.hp - player[2] * 2 + monsterSelect.def;
+                playAtkText = `크리티컬 적용!<br> ${player[2] * 2}`;
+                monDemage = `${player[2] * 2 - monsterSelect.def}`;
+            }else{
+                monsterSelect.hp = monsterSelect.hp - player[2] + monsterSelect.def;
+                playAtkText = `${player[2]}`;
+                monDemage = `${player[2] - monsterSelect.def}`;
+            }
         }else{
-            monsterSelect.hp = monsterSelect.hp - player[2] + monsterSelect.def;
-            playAtkText = `${player[2]}`;
-            monDemage = `${player[2] - monsterSelect.def}`;
+            if(monCri >= 5){
+                player[1] = player[1] - monsterSelect.atk * 2 + player[3];      
+                monAtkText = `크리티컬 적용!<br> ${monsterSelect.atk * 2}`;     
+                playDemage = `${monsterSelect.atk * 2 - player[3]}`;     
+            }else{
+                player[1] = player[1] - monsterSelect.atk + player[3];
+                monAtkText = `${monsterSelect.atk}`;  
+                playDemage = `${monsterSelect.atk - player[3]}`;
+            }
         }
-    
-        let playTurn = document.querySelector(".playerTurn");
-        playTurn.innerHTML = `플레이어 공격!<br> ${playAtkText}으로 공격!<br> 몬스터 체력 ${monDemage} 감소!`;
-    
-        text = `${monsterSelect.hp} : 체력`;
-        monhp.innerHTML = `${text}`;
-
-        monsterShake();  
-
-        if(monsterSelect.hp <= 0){
-            afterFight();
-        }else{
-            // 몬스터 공격
-            setTimeout(function(){
-                if(monCri >= 5){
-                    player[1] = player[1] - monsterSelect.atk * 2 + player[3];      
-                    monAtkText = `크리티컬 적용!<br> ${monsterSelect.atk * 2}`;     
-                    playDemage = `${monsterSelect.atk * 2 - player[3]}`;     
-                }else{
-                    player[1] = player[1] - monsterSelect.atk + player[3];
-                    monAtkText = `${monsterSelect.atk}`;  
-                    playDemage = `${monsterSelect.atk - player[3]}`;
-                }
         
-                let monTurn = document.querySelector(".monsterTurn");
-                monTurn.innerHTML = `몬스터 공격!<br> ${monAtkText}으로 공격!<br> 플레이어 체력 ${playDemage} 감소!`;
-        
-                playerShake();
-        
-                playerhp.innerHTML = `체력 : ${player[1]}`;
-        
-                if(player[1] <= 0){
-                    afterFight();
-                }
-            }, 1000); 
-        }                   
-    }, 500);    
+        count++;        
+    }
 
-    // 결과창 문구 초기화
-    setTimeout(() => {
-        let playTurn = document.querySelector(".playerTurn");
-        playTurn.innerHTML = ``;
+    console.log(player);
+    console.log(monsterSelect);
 
-        let monTurn = document.querySelector(".monsterTurn");
-        monTurn.innerHTML = ``;        
-    }, 3000);
-}
+    // 전투 회당 결과창 호출
+    let playTurn = document.querySelector(".playerTurn");
+    let monTurn = document.querySelector(".monsterTurn");
 
-// 타격 시 이미지 흔들림
-function playerShake(){
-    let mePhoto = document.querySelector(".me");
+    playTurn.innerHTML = `플레이어 공격!<br> ${playAtkText}으로 공격!<br> 몬스터 체력 ${monDemage} 감소!`;
+    monTurn.innerHTML = `몬스터 공격!<br> ${monAtkText}으로 공격!<br> 플레이어 체력 ${playDemage} 감소!`;
 
-    mePhoto.classList.add("shake");
+    // 전투 결과 프로필 적용
+    text = `${monsterSelect.hp} : 체력`;
+    monhp.innerHTML = `${text}`;
+    playerhp.innerHTML = `체력 : ${player[1]}`;
 
-    setTimeout(function(){
-        mePhoto.classList.remove("shake");
-    }, 1000);
-}
-function monsterShake(){
-    let monPhoto = document.querySelector(".monster");
-
-    monPhoto.classList.add("shake");
-
-    setTimeout(function(){
-        monPhoto.classList.remove("shake");
-    }, 1000);
+    if(player[1] <= 0 || monsterSelect.hp <= 0){
+        afterFight();
+    }
 }
 
 // 체력이 0보다 작아졌을 때 결과 비교 및 보상
 function afterFight(){
-    if(player[1] <= 0){
-        playerOut();
-    }else{
-        monsterOut();
+    if(player[1] <= 0){        
+        alert(`패배하셨습니다. 마을로 돌아갑니다...`)
+    }else if(monsterSelect.hp <= 0){
+        alert(`승리하셨습니다! 마을로 돌아갑니다. \n
+        경험치 획득 : ${monsterSelect.gift} \n
+        포상금 획득 : ${monsterSelect.wanted} `)
+        player[4] = player[4] + monsterSelect.gift;
+        player[5] += monsterSelect.wanted;
+        document.querySelector('.plExp').innerHTML = "경험치 : " + player[4];
+
+        if(player[4]>= neededExp){
+            alert('레벨업 하였습니다!');
+            player[0] += 1;
+            document.querySelector('.plLevel').innerHTML = "레벨 : " + player[0];
+            hpToNextLevel += 10;
+            atkToNextLevel += 10;
+            defToNextLevel += 3;
+            player[4] = 0;
+            neededExp += 20;
+            document.querySelector('.plExp').innerHTML = "경험치 : " + player[4];
+        }
     }
-
-    setTimeout(function(){
-        if(player[1] <= 0){        
-            alert(`패배하셨습니다. 마을로 돌아갑니다...`)
-            
-        }else if(monsterSelect.hp <= 0){
-            alert(`승리하셨습니다! 마을로 돌아갑니다. \n
-            경험치 획득 : ${monsterSelect.gift}`)
     
-            player[4] = player[4] + monsterSelect.gift;
-        }      
-        
-        // 플레이어 초기화 변수
-        let playerInit = [1, 120, 15, 5];
+
+
+    // 플레이어 초기화 변수
+    let playerInit = [1, hpToNextLevel, atkToNextLevel, defToNextLevel];
+
+    // 플레이어 리셋    
+    player[1] = playerInit[1];
+    player[2] = playerInit[2];
+    player[3] = playerInit[3];
+    document.querySelector('.mainHp').innerHTML = "체력 : " + player[1];
+    document.querySelector('.mainAtk').innerHTML = "공격력 : " + player[2];
+    document.querySelector('.mainArmor').innerHTML = "방어력 : " + player[3];
+    document.querySelector('.mainCash').innerHTML = "소지금 : " + player[5];
     
-        // 플레이어 리셋    
-        player[1] = playerInit[1];
-        
-        // 몬스터 초기화 배열
-        let monInit1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
-        let monInit2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1]);
-        let monInit3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2]);
-        let monInit4 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[3]);
-        let monInit5 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[4]);
-        let monInit = [monInit1, monInit2, monInit3, monInit4, monInit5];
-        
-        // 몬스터 리셋
-        monster[monRandom] = monInit[monRandom];
-            
-        // 메인 화면과 전투 화면 스위칭 및 프로필 오프
-        let gamePlaying = document.querySelector(".gameArea");
-        gamePlaying.classList.remove("active");
     
-        let mainPage = document.querySelector(".homeArea");
-        mainPage.classList.remove("active");
+    // 몬스터 초기화 배열
+    let monInit1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0],10);
+    let monInit2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1],15);
+    let monInit3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2],18);
+    let monInit4 = new createmonster("trash", 150, 10, 4, 15, monsterProfile[3],23);
+    let monInit5 = new createmonster("rabbit", 150, 10, 4, 15, monsterProfile[4],30);
+    let monInit = [monInit1, monInit2, monInit3, monInit4, monInit5];
     
-        let profilePopup = document.querySelector(".profile");
-        profilePopup.classList.remove("active");
+    // 몬스터 리셋
+    monster[monRandom] = monInit[monRandom];
+        
+    // 메인 화면과 전투 화면 스위칭 및 프로필 오프
+    let gamePlaying = document.querySelector(".gameArea");
+    gamePlaying.classList.remove("active");
+
+    let mainPage = document.querySelector(".homeArea");
+    mainPage.classList.remove("active");
+
+    let profilePopup = document.querySelector(".profile");
+    profilePopup.classList.remove("active");
+
+    let meImg = document.querySelector(".me");
+    meImg.classList.remove("active");
     
-        let meImg = document.querySelector(".me");
-        meImg.classList.remove("active");
-        
-        let monImg = document.querySelector(".monster");
-        monImg.classList.remove("active");
-        
-        let matchingBtn = document.querySelector(".matching");
-        matchingBtn.classList.remove("active");    
-        
-        let actionBtn = document.querySelector(".actionBtnGroup");
-        actionBtn.classList.remove("active");  
+    let monImg = document.querySelector(".monster");
+    monImg.classList.remove("active");
     
-        let atkResultBtn = document.querySelector(".attackResult");
-        atkResultBtn.classList.remove("active");    
-        
-        let mePhoto = document.querySelector(".me");
-        if(mePhoto.classList.contains("out")){
-            mePhoto.classList.remove("out");
-            mePhoto.style.opacity = "1";
-        }
+    let matchingBtn = document.querySelector(".matching");
+    matchingBtn.classList.remove("active");    
+    
+    let actionBtn = document.querySelector(".actionBtnGroup");
+    actionBtn.classList.remove("active");  
 
-        let monPhoto = document.querySelector(".monster");
-        if(monPhoto.classList.contains("out")){
-            monPhoto.classList.remove("out");
-            monPhoto.style.opacity = "1";
-        }
-    }, 1000);
-}
-
-// 패배 시 이미지 아웃
-function playerOut(){
-    let mePhoto = document.querySelector(".me");
-
-    mePhoto.classList.add("out");
-
-    setTimeout(function(){
-        mePhoto.style.opacity = "0";
-    }, 500);
-}
-function monsterOut(){
-    let monPhoto = document.querySelector(".monster");
-
-    monPhoto.classList.add("out");
-
-    setTimeout(function(){
-        monPhoto.style.opacity = "0";
-    }, 500);
+    let atkResultBtn = document.querySelector(".attackResult");
+    atkResultBtn.classList.remove("active");  
 }
 
 // 인벤토리 아이템 보유개수 보여주는 식

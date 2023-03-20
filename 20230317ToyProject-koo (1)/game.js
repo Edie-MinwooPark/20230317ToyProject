@@ -1,6 +1,6 @@
 // 플레이어 기본 정보
 // 순서대로 레벨, 체력, 공격력, 방어력, 경험치
-let player = [1, 120, 15, 5, 0, 500];
+let player = [1, 120, 15, 5, 0];
 
 // 몬스터 생성 함수
 function createmonster(name, hp, atk, def, gift, imageUrl){
@@ -52,7 +52,6 @@ function gamePlaying(){
         document.querySelector('.mainAtk').innerHTML = "공격력 : " + player[2];
         document.querySelector('.mainArmor').innerHTML = "방어력 : " + player[3];
         document.querySelector('.mainCash').innerHTML = "소지금 : " + player[5];
-
     }else{
         gamePlaying.classList.add("active");
     }    
@@ -72,6 +71,9 @@ function gamePlaying(){
 
     let maininvenOnOff = document.querySelector(".homeArea .inven");
     maininvenOnOff.classList.remove("active");
+
+    let shopOnOff = document.querySelector(".shop");
+    shopOnOff.classList.remove("active");
 
     // 전투 화면에서 도망가기 눌렀을 때 프로필 오프
     let profilePopup = document.querySelector(".profile");
@@ -117,7 +119,7 @@ function invenOnOff(){
 // 상점 온오프 버튼
 function shopOnOff(){
     // 메인 화면에서 상점 온오프
-    let shopOnOff = document.querySelector(".homeArea .shop");
+    let shopOnOff = document.querySelector(".shop");
 
     if(shopOnOff.classList.contains("active")){
         shopOnOff.classList.remove("active");
@@ -144,9 +146,9 @@ function faceToMonster(){
     let actionBtn = document.querySelector(".actionBtnGroup");
     actionBtn.classList.add("active");  
 
-    let attackRes = document.querySelector(".attackResult");
-    attackRes.classList.add("active");  
-    
+    let atkResultBtn = document.querySelector(".attackResult");
+    atkResultBtn.classList.add("active");  
+
     // 전투 창 초기화
     let playTurn = document.querySelector(".playerTurn");
     let monTurn = document.querySelector(".monsterTurn");
@@ -159,7 +161,6 @@ function faceToMonster(){
     let monhp = document.querySelector(".msthp");
     let monatk = document.querySelector(".mstatk");
     let mondef = document.querySelector(".mstdef");
-
     let monsterphoto = document.querySelector(".monsterphoto")
     let monsterActive = document.querySelector(".monster.active")
     
@@ -201,7 +202,7 @@ function fight(){
     playAtkText = "";  // 플레이어 공격 문구 초기화
     monAtkText = "";  // 몬스터 공격 문구 초기화
     playDemage = "";  // 플레이어 받은 데미지 문구 초기화
-    monDemage = "";   // 몬스터 받은 데미지 문구 초기화
+    monDemage = "";   // 몬스터 받은 데미지 문구 초기화 
 
     console.log(playerCri);
     console.log(monCri);
@@ -231,7 +232,7 @@ function fight(){
         
         count++;        
     }
-    
+
     console.log(player);
     console.log(monsterSelect);
 
@@ -252,9 +253,9 @@ function fight(){
     }
 }
 
-// 체력이 줄었을 때 결과 비교 및 보상
+// 체력이 0보다 작아졌을 때 결과 비교 및 보상
 function afterFight(){
-    if(player[0] <= 0){        
+    if(player[1] <= 0){        
         alert(`패배하셨습니다. 마을로 돌아갑니다...`)
     }else if(monsterSelect.hp <= 0){
         alert(`승리하셨습니다! 마을로 돌아갑니다. \n
@@ -279,7 +280,7 @@ function afterFight(){
     
     // 몬스터 리셋
     monster[monRandom] = monInit[monRandom];
-
+        
     // 메인 화면과 전투 화면 스위칭 및 프로필 오프
     let gamePlaying = document.querySelector(".gameArea");
     gamePlaying.classList.remove("active");
@@ -302,6 +303,103 @@ function afterFight(){
     let actionBtn = document.querySelector(".actionBtnGroup");
     actionBtn.classList.remove("active");  
 
-    let attackRes = document.querySelector(".attackResult");
-    attackRes.classList.remove("active");  
+    let atkResultBtn = document.querySelector(".attackResult");
+    atkResultBtn.classList.remove("active");  
 }
+
+// 인벤토리 아이템 보유개수 보여주는 식
+
+document.getElementById('invenhealthPotion').innerHTML = `보유개수 : ${itemcontents.healthpotion}`
+document.getElementById('invenattackPotion').innerHTML = `보유개수 : ${itemcontents.attackpotion}`
+document.getElementById('invendefensePotion').innerHTML = `보유개수 : ${itemcontents.defensepotion}`
+document.getElementById('invenexpPotion').innerHTML = `보유개수 : ${itemcontents.exppotion}`
+document.getElementById('invenmultiPotion').innerHTML = `보유개수 : ${itemcontents.multipotion}`
+document.getElementById('invenbigexpPotion').innerHTML = `보유개수 : ${itemcontents.bigexppotion}`
+
+document.getElementById('invenhealthPotion1').innerHTML = `보유개수 : ${itemcontents.healthpotion}`
+document.getElementById('invenattackPotion1').innerHTML = `보유개수 : ${itemcontents.attackpotion}`
+document.getElementById('invendefensePotion1').innerHTML = `보유개수 : ${itemcontents.defensepotion}`
+document.getElementById('invenexpPotion1').innerHTML = `보유개수 : ${itemcontents.exppotion}`
+document.getElementById('invenmultiPotion1').innerHTML = `보유개수 : ${itemcontents.multipotion}`
+document.getElementById('invenbigexpPotion1').innerHTML = `보유개수 : ${itemcontents.bigexppotion}`
+
+
+// 인벤토리 아이템 클릭시 사용 함수
+
+function useItem(contentnumber){
+    switch (contentnumber) {
+        case 1:
+            if(itemcontents.healthpotion >= 1){
+                itemcontents.healthpotion -= 1;
+                document.getElementById('invenhealthPotion').innerHTML = `보유개수 : ${itemcontents.healthpotion}`
+                document.getElementById('invenhealthPotion1').innerHTML = `보유개수 : ${itemcontents.healthpotion}`
+                player[1] += 20;
+                alert('아이템을 사용했습니다');
+            }else{
+                alert('아이템 갯수가 부족합니다');
+            }
+            break;
+        case 2:
+            if(itemcontents.attackpotion >= 1){
+                itemcontents.attackpotion -= 1;
+                document.getElementById('invenattackPotion').innerHTML = `보유개수 : ${itemcontents.attackpotion}`
+                document.getElementById('invenattackPotion1').innerHTML = `보유개수 : ${itemcontents.attackpotion}`
+                player[2] += 5
+                alert('아이템을 사용했습니다');
+            }else{
+                alert('아이템 갯수가 부족합니다');
+            }
+            break;
+        case 3:
+            if(itemcontents.defensepotion >= 1){
+                itemcontents.defensepotion -= 1;
+                document.getElementById('invendefensePotion').innerHTML = `보유개수 : ${itemcontents.defensepotion}`
+                document.getElementById('invendefensePotion1').innerHTML = `보유개수 : ${itemcontents.defensepotion}`
+                player[3] += 3
+                alert('아이템을 사용했습니다');
+            }else{
+                alert('아이템 갯수가 부족합니다');
+            }
+            break;
+        case 4:
+            if(itemcontents.exppotion >= 1){
+                itemcontents.exppotion -= 1;
+                document.getElementById('invenexpPotion').innerHTML = `보유개수 : ${itemcontents.expkpotion}`
+                document.getElementById('invenexpPotion1').innerHTML = `보유개수 : ${itemcontents.expkpotion}`
+                player[4] += 50
+                alert('아이템을 사용했습니다');
+            }else{
+                alert('아이템 갯수가 부족합니다');
+            }
+            break;
+        case 5:
+            if(itemcontents.multipotion >= 1){
+                itemcontents.multipotion -= 1;
+                document.getElementById('invenmultiPotion').innerHTML = `보유개수 : ${itemcontents.multipotion}`
+                document.getElementById('invenmultiPotion1').innerHTML = `보유개수 : ${itemcontents.multipotion}`
+                player[1] += 20;
+                player[2] += 5;
+                player[3] += 3;
+                console.log(player);
+                alert('아이템을 사용했습니다');
+            }else{
+                alert('아이템 갯수가 부족합니다');
+            }
+            break;
+        case 6:
+            if(itemcontents.bigexppotion >= 1){
+                itemcontents.bigexppotion -= 1;
+                document.getElementById('invenbigexpPotion').innerHTML = `보유개수 : ${itemcontents.bigexppotion}`
+                document.getElementById('invenbigexpPotion1').innerHTML = `보유개수 : ${itemcontents.bigexppotion}`
+                player[0] += 1;
+                alert('아이템을 사용했습니다');
+            }else{
+                alert('아이템 갯수가 부족합니다');
+            }
+            break;
+      
+    
+    }
+}
+
+console.log(player);

@@ -7,6 +7,7 @@ let defToNextLevel = 5;
 let neededExp = 50;
 
 
+
 // 몬스터 생성 함수
 function createmonster(name, hp, atk, def, gift, imageUrl,wanted){
     this.name = name;
@@ -533,10 +534,11 @@ let playerhp = document.querySelector(".hp");
 let playeratk = document.querySelector(".atk");
 let playerdef = document.querySelector(".def");
 
+
 function useItem(contentnumber){
         switch (contentnumber) {
             case 1:
-                if(ea1 >= 1){
+                if(ea1 >= 1 && player[1] > hpToNextLevel ){
                     alert('아이템을 사용합니다.');
                     player[1] = player[1] + 30;
                     ea1--
@@ -545,7 +547,7 @@ function useItem(contentnumber){
                     hp.innerHTML = `체력 : ${player[1]}`
                     playerhp.innerHTML = `체력 : ${player[1]}`;
                 }else{
-                    alert('아이템 갯수가 부족합니다');
+                    alert('아이템을 사용할 수 없습니다. (아이템 부족 or 최대 체력 초과)');
                 }
                 break;
             case 2:

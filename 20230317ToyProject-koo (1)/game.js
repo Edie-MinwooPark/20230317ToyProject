@@ -1,6 +1,6 @@
 // 플레이어 기본 정보
 // 순서대로 레벨, 체력, 공격력, 방어력, 경험치
-let player = [1, 120, 15, 5, 0];
+let player = [1, 120, 15, 5, 0, 500];
 
 // 몬스터 생성 함수
 function createmonster(name, hp, atk, def, gift, imageUrl){
@@ -45,6 +45,14 @@ function gamePlaying(){
 
     if(gamePlaying.classList.contains("active")){
         gamePlaying.classList.remove("active");
+        document.querySelector('.plLevel').innerHTML = "레벨 : " + player[0];
+        document.querySelector('.plExp').innerHTML = "경험치 : " + player[4];
+
+        document.querySelector('.mainHp').innerHTML = "체력 : " + player[1];
+        document.querySelector('.mainAtk').innerHTML = "공격력 : " + player[2];
+        document.querySelector('.mainArmor').innerHTML = "방어력 : " + player[3];
+        document.querySelector('.mainCash').innerHTML = "소지금 : " + player[5];
+
     }else{
         gamePlaying.classList.add("active");
     }    

@@ -139,39 +139,6 @@ function faceToMonster(){
     playeratk.innerHTML = `공격력 : ${player[2]}`;
     playerdef.innerHTML = `방어력 : ${player[3]}`;
 }
-function image(){
-
-    let image = document.querySelector(".monsterphoto");
-        if (monsterSelect = monster[0]){
-            image.classList.add("image1");
-        }else if(monsterSelect = monster[1]){
-            image.classList.add("image2");
-        }else if(monsterSelect = monster[2]){
-            image.classList.add("image3");
-        }else if(monsterSelect = monster[3]){
-            image.classList.add("image4");
-        }else {
-            image.classList.add("image5");
-        }
-}
-image();
-function image2(){
-
-    let image = document.querySelector(".monster");
-        if (monsterSelect = monster[0]){
-            image.classList.add("image1");
-        }else if(monsterSelect = monster[1]){
-            image.classList.add("image2");
-        }else if(monsterSelect = monster[2]){
-            image.classList.add("image3");
-        }else if(monsterSelect = monster[3]){
-            image.classList.add("image4");
-        }else {
-            image.classList.add("image5");
-        }
-}
-image2();
-
 function fight(){
     let count = 1 ;
     let monhp = document.querySelector(".msthp");

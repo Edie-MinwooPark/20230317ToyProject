@@ -218,26 +218,7 @@
     position: absolute;
     right: 0;
 }
-.image1{
-    background-image: url("./monsterimage/icons8-robot-2-100.png");
-    background-size: cover;  
-}
-.image2{
-    background-image: url("./monsterimage/icons8-외계인-48.png");
-    background-size: cover;  
-}
-.image3{
-    background-image: url("./monsterimage/icons8-space-50.png");
-    background-size: cover;  
-}
-.image4{
-    background-image: url("./monsterimage/icons8-trash-pile-50.png");
-    background-size: cover;  
-}
-.image5{
-    background-image: url("./monsterimage/icons8-달-위성-64.png");
-    background-size: cover;  
-}
+
 .line{
     width: 200px;
     height: 150px;

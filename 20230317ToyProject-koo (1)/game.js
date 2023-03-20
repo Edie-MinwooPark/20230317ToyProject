@@ -113,8 +113,8 @@ function gameEscape(){
     player[3] = playerInit[3];
     
     // 몬스터 초기화 배열
-    let monInit1 = new createmonster("페이스 허거 LV.1", 80, 10, 2, 10, monsterProfile[0],10);
-    let monInit2 = new createmonster("네오모프 LV.2", 100, 15, 1, 5, monsterProfile[1],15);
+    let monInit1 = new createmonster("페이스 허거 LV.1", 80, 10, 2, 15, monsterProfile[0],10);
+    let monInit2 = new createmonster("네오모프 LV.2", 100, 15, 1, 15, monsterProfile[1],15);
     let monInit3 = new createmonster("디컨 LV.3", 120, 20, 7, 15, monsterProfile[2],18);
     let monInit4 = new createmonster("제오모프 LV.4", 150, 22, 30, 9, monsterProfile[3],23);
     let monInit5 = new createmonster("미확인 물체 LV.5", 200, 30, 40, 20, monsterProfile[4],30);

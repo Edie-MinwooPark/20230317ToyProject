@@ -14,17 +14,19 @@
     border-radius: 30px;
     /* display: none; */
 }
+
+/* 메인 화면 플레이어 프로필 설정 */
 .status{
     border: 1px solid;
     display: flex;
-    width: 400px;
-    height: 150px;
+    width: 460px;
+    height: 180px;
     background-color: rgba(0, 0, 0, 0.2)
 }
 
 .mainProfile{
-    width: 150px;
-    height: 130px;
+    width: 200px;
+    height: 160px;
     border-radius: 10px;
     background-image: url("./profile_image/player_profile.jpg");
     background-size: cover;
@@ -32,17 +34,22 @@
 
 .mainLevel{
     background-color: gray;
-    width: 150px;
+    width: 200px;
     height: 20px;
     display: flex;
 }
 
 .mainLevel div{
+    padding-left: 5px;
+}
+
+.mainLevel .plLevel{
     width: 70px;
+    border-right: 1px solid black;
 }
 
 .playerStatus{
-    margin-top: 10px;
+    margin-top: 25px;
 }
 
 .playerStatus div{
@@ -52,9 +59,6 @@
     margin-bottom: 10px;
     margin-left: 40px;
 }
-
-
-
 
 /* 메인 화면 온오프 설정 */
 .homeArea.active{
@@ -69,8 +73,7 @@
     bottom: 30px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center;    
 }
 
 /* 홈 버튼 크기 설정 */
@@ -137,7 +140,6 @@
     align-items: center;
     background-color: aqua;
     border-radius: 15px;
-
     border: 1px solid black;
 }
 
@@ -167,7 +169,6 @@
     justify-content: center;
     align-items: center;
     background-color: aquamarine;
-
     border: 1px solid black;
     border-radius: 20px;
 }
@@ -185,7 +186,6 @@
     justify-content: center;
     align-items: center;
     background-color: beige;
-
     border: 1px solid black;
     border-radius: 20px;
 }
@@ -283,13 +283,11 @@
 }
 .mephoto{
     background-image: url("./profile_image/player_profile.jpg");
-    background-size: cover;  
+    background-size: cover;
 }
 .monsterphoto{
-    position: absolute;
-    right: 0;
+    right: 0px;    
 }
-
 .line{
     width: 200px;
     height: 150px;
@@ -319,8 +317,8 @@
 /* 플레이어 몬스터 이미지 */
 .me, .monster{
     background-color: white;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     display: none;    
     position: absolute;
     text-align: center;
@@ -329,8 +327,6 @@
 }
 .me{
     left: 10%;
-    background-image: url("./profile_image/player_profile.jpg");
-    background-size: cover;  
 }
 .monster{
     right: 10%;
@@ -438,9 +434,44 @@
     display: block;
 }
 
-.ea{
-    text-align: center;
-    top: 70%;
-    left: 25%;  
-
+/* 체력아이템 이미지 */
+.invenitemimg{
+    background-image: url(./shopimages/healthpotion.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    transform: translateX(40px);
+    margin-top: 10px;
 }
+/* 공격력 아이템 이미지 */
+.invenitemimg2{
+    background-image: url(./shopimages/attackpower.png);
+}
+/* 방어력 아이템 이미지 */
+.invenitemimg3{
+    background-image: url(./shopimages/defense.png);
+}
+/* 경험치 아이템 이미지 */
+.invenitemimg4{
+    background-image: url(./shopimages/exp.png);
+}
+/* 멀티포션 아이템 이미지 */
+.invenitemimg5{
+    background-image: url(./shopimages/three.png);
+}
+/* 경험치 ++ 아이템 이미지 */
+.invenitemimg6{
+    background-image: url(./shopimages/exp.png);
+}
+/* 아이템 이름명 */
+.invenitemtext{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.howmanyitem{
+    padding-left: 16px;
+    padding-top: 5px;
+}
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./inventory.css" />
+  </head>
+  <body>
+    <h1>인벤토리</h1>
+    <div id="remainedcash"></div>
+    <div id="tothemain" onclick="tothemain()">돌아가기</div>
+    <div id="shoppingbox">
+      <div class="itembox" onclick="useItem(1);"> 
+        <div class="shopitemtext">체력 물약</div>
+        <div class="shopitemimg"></div>
+        <div class="sub_tag">체력 30 증가</div>
+        <div class="shopcash" id="healthPotion"></div>
+        
+      </div>
+      <div class="itembox" onclick="useItem(2);">
+        <div class="shopitemtext">공격력</div>
+        <div class="shopitemimg shopitemimg2"></div>
+        <div class="shopcash" id="attackPotion">50</div>
+        <div class="sub_tag">공격력 5 증가</div>
+        
+      </div>
+      <div class="itembox" onclick="useItem(3)">
+        <div class="shopitemtext">방어력</div>
+        <div class="shopitemimg shopitemimg3"></div>
+        <div class="shopcash" id="defensePotion">50</div>
+        <div class="sub_tag">방어력 3 증가</div>
+        
+      </div>
+      <div class="itembox" onclick="useItem(4)">
+        <div class="shopitemtext">경험치</div>
+        <div class="shopitemimg shopitemimg4"></div>
+        <div class="shopcash" id="expPotion">100</div>
+        <div class="sub_tag">경험치 50 증가</div>
+        
+      </div>
+      <div class="itembox" onclick="useItem(5)">
+        <div class="shopitemtext">멀티 파워</div>
+        <div class="shopitemimg shopitemimg5"></div>
+        <div class="shopcash" id="multiPotion">140</div>
+        <div class="sub_tag">공격,방어,체력 증가</div>
+        
+      </div>
+      <div class="itembox" onclick="useItem(6)">
+        <div class="shopitemtext">경험치 ++</div>
+        <div class="shopitemimg shopitemimg6"></div>
+        <div class="shopcash" id="bigexpPotion">999</div>
+        <div class="sub_tag">레벨 1 증가</div>
+        
+      </div>
+    </div>
+  </body>
+  <script src="./shop.js"></script>
+  <script src="./inventory.js"></script>
+</html>

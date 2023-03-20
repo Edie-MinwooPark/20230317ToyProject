@@ -29,12 +29,7 @@
         <div class="homeBtnGroup">
             <button class="gameStart" onclick="gamePlaying();">전투 시작</button>
             <button class="mainInvenBtn" onclick="invenOnOff();">인벤토리 열기</button>
-            <div>
-                <a href="./shop.html">
-                    <button class="shopBtn">상점</button>
-                </a>
-            </div>
-
+            <button class="shopBtn" onclick="shopOnOff();">상점</button>
             <div>
                 <a href="./index.html">
                     <button class="toLogInPage">게임 종료</button>
@@ -48,9 +43,50 @@
             <div class="item"></div>
             <div class="item"></div>
             <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
-            <div class="item"></div>
+        </div>
+        <div class="shop">
+            <div class="item">
+                <div class="shopitemtext">체력 물약</div>
+                <div class="shopitemimg"></div>
+                <div class="shopcash" id="healthPotion" >50</div>
+                <img class="shopcoin" src="./shopimages/coins.png" alt="">
+                <div class="sub_tag">체력 30 증가</div>
+            </div>
+            <div class="item">
+                <div class="shopitemtext">공격력</div>
+                <div class="shopitemimg shopitemimg2" ></div>
+                <div class="shopcash" id="attackPotion">50</div>
+                <img class="shopcoin" src="./shopimages/coins.png" alt="">
+                <div class="sub_tag">공격력 5 증가</div>
+            </div>
+            <div class="item">
+                <div class="shopitemtext">경험치</div>
+                <div class="shopitemimg shopitemimg4"></div>
+                <div class="shopcash" id="expPotion">100</div>
+                <img class="shopcoin" src="./shopimages/coins.png" alt="">
+                <div class="sub_tag">경험치 50 증가</div>
+            </div>
+            <div class="item">
+                <div class="shopitemtext">방어력</div>
+                <div class="shopitemimg shopitemimg3"></div>
+                <div class="shopcash" id="defensePotion">50</div>
+                <img class="shopcoin" src="./shopimages/coins.png" alt="">
+                <div class="sub_tag">방어력 3 증가</div>
+            </div>
+            <div class="item">
+                <div class="shopitemtext">멀티 파워</div>
+                <div class="shopitemimg shopitemimg5"></div>
+                <div class="shopcash" id="multiPotion">140</div>
+                <img class="shopcoin" src="./shopimages/coins.png" alt="">
+                <div class="sub_tag">공,방,체 증가</div>
+            </div>
+            <div class="item">
+                <div class="shopitemtext">경험치 ++</div>
+                <div class="shopitemimg shopitemimg6"></div>
+                <div class="shopcash" id="bigexpPotion">999</div>
+                <img class="shopcoin" src="./shopimages/coins.png" alt="">
+                <div class="sub_tag">레벨 1 증가</div>
+            </div>
         </div>
     </div>
     <div class="gameArea">
@@ -110,4 +146,5 @@
     
 </body>
 <script src="./game.js"></script>
+<script src="./shop.js"></script>
 </html>

@@ -12,18 +12,21 @@
     background-size: 130%;
     opacity: 0.9;
     border-radius: 30px;
+    /* display: none; */
 }
+
+/* 메인 화면 플레이어 프로필 설정 */
 .status{
     border: 1px solid;
     display: flex;
-    width: 400px;
-    height: 150px;
+    width: 460px;
+    height: 180px;
     background-color: rgba(0, 0, 0, 0.2)
 }
 
 .mainProfile{
-    width: 150px;
-    height: 130px;
+    width: 200px;
+    height: 160px;
     border-radius: 10px;
     background-image: url("./profile_image/player_profile.jpg");
     background-size: cover;
@@ -31,17 +34,22 @@
 
 .mainLevel{
     background-color: gray;
-    width: 150px;
+    width: 200px;
     height: 20px;
     display: flex;
 }
 
 .mainLevel div{
+    padding-left: 5px;
+}
+
+.mainLevel .plLevel{
     width: 70px;
+    border-right: 1px solid black;
 }
 
 .playerStatus{
-    margin-top: 10px;
+    margin-top: 25px;
 }
 
 .playerStatus div{
@@ -155,16 +163,35 @@
 
 /* 인벤토리 설정 */
 .inven{
-    width: 500px;
-    height: 500px;
+    width: 440px;
+    height: 305px;
     position: absolute;    
     bottom: 150px;
+    left: 40px;
     padding: auto;
     display: none;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     background-color: aquamarine;
+
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+/* 상점 기본 설정 */
+.shop{
+    width: 440px;
+    height: 305px;
+    position: absolute;    
+    bottom: 150px;
+    right: 40px;
+    padding: auto;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
 
     border: 1px solid black;
     border-radius: 20px;
@@ -188,8 +215,12 @@
     display: flex;
 }
 
-/* 인벤토리 내 아이템 설정 */
-.homeArea .inven .item{
+.homeArea .shop.active{
+    display: flex;
+}
+
+/* 메인 페이지인벤토리 및 상점 내 아이템 칸 설정 */
+.homeArea .item{
     width: 120px;
     height: 120px;
     border: 1px solid black;
@@ -198,6 +229,8 @@
     align-items: center;
     border-radius: 10px;
     background-color: white;
+    position: relative;    
+    cursor: pointer;
 }
 
 /* 인벤토리 온오프 설정 */
@@ -205,7 +238,7 @@
     display: flex;
 }
 
-/* 인벤토리 내 아이템 설정 */
+/* 전투 페이지 인벤토리 내 아이템 설정 */
 .gameArea .inven .item{
     width: 120px;
     height: 120px;
@@ -215,6 +248,8 @@
     align-items: center;
     border-radius: 10px;
     background-color: white;
+    position: relative;
+    cursor: pointer;
 }
 
 /* 전투 기본 정보 설정 */
@@ -311,5 +346,99 @@
     display: flex;
 }
 .me.active, .monster.active{
+    display: block;
+}
+
+.me.active{
+    background-image: url("./profile_image/player_profile.jpg");
+    background-size: cover;
+} 
+
+/* 전투 결과창 기본 설정 */
+.attackResult{
+    width: 250px;
+    height: 220px;
+    display: none;
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+}
+.attackResult.active{
+    display: block;
+}
+.playerTurn, .monsterTurn{
+    width: 230px;
+    height: 100px;
+    margin: 5px;
+}
+.monsterTurn{
+    border-top: 1px solid white;
+    padding: 5px;
+}
+
+/* 상점 내 아이템표기 */
+.shopitemtext{
+    width: 70px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+}
+.shopcoin{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 70%;
+    left: 25%;    
+}
+.shopcash{
+    position: absolute;
+    left: 55%;
+    top: 70%;
+}
+.shopitemimg{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 5px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(./shopimages/healthpotion.png);
+    background-size: cover;
+}
+.shopitemimg2{
+    background-image: url(./shopimages/attackpower.png);
+}
+.shopitemimg3{
+    background-image: url(./shopimages/defense.png);
+}
+.shopitemimg4, .shopitemimg6{
+    background-image: url(./shopimages/exp.png);
+}
+.shopitemimg5{
+    background-image: url(./shopimages/three.png)
+}
+
+/* 아이템 설명 호버링 */
+.sub_tag{
+    background-color: black;
+    color: white;
+    height: 120px;
+    width: 120px;
+    display: none;
+    text-align: center;
+    line-height: 5.2;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.item:hover .sub_tag{
     display: block;
 }

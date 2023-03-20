@@ -1,5 +1,5 @@
 // 플레이어 기본 정보
-// 순서대로 레벨, 체력, 공격력, 방어력, 경험치
+// 순서대로 레벨, 체력, 공격력, 방어력, 경험치, 소지금
 let player = [1, 120, 15, 5, 0, 500];
 
 // 몬스터 생성 함수
@@ -22,11 +22,11 @@ let monsterProfile = [
 ]
 
 // 몬스터 정보
-let monster1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
-let monster2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1]);
-let monster3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2]);
-let monster4 = new createmonster("trash", 80, 20, 5, 20, monsterProfile[3]);
-let monster5 = new createmonster("rabbit", 100, 10, 2, 10, monsterProfile[4]);
+let monster1 = new createmonster("buzz", 80, 10, 2, 15, monsterProfile[0]);
+let monster2 = new createmonster("alien", 100, 15, 5, 20, monsterProfile[1]);
+let monster3 = new createmonster("would you", 120, 20, 7, 35, monsterProfile[2]);
+let monster4 = new createmonster("trash", 150, 30, 9, 40, monsterProfile[3]);
+let monster5 = new createmonster("rabbit", 200, 40, 20, 50, monsterProfile[4]);
 
 // 몬스터 배열
 let monster = [monster1, monster2, monster3, monster4, monster5];
@@ -239,14 +239,17 @@ function fight(){
 
 // 체력이 줄었을 때 결과 비교 및 보상
 function afterFight(){
-    if(player[0] <= 0){        
+    if(player[1] <= 0){        
         alert(`패배하셨습니다. 마을로 돌아갑니다...`)
+
     }else if(monsterSelect.hp <= 0){
         alert(`승리하셨습니다! 마을로 돌아갑니다. \n
         경험치 획득 : ${monsterSelect.gift}`)
-
         player[4] = player[4] + monsterSelect.gift;
+        // 플레이어 배열 경험치 - 수치만 바꿔서 넣어주기
+        // 그리고 경험치 관련 
     }
+        
     
     // 플레이어 초기화 변수
     let playerInit = [1, 120, 15, 5];

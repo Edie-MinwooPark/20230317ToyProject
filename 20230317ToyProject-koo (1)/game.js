@@ -88,6 +88,9 @@ function gamePlaying(){
     
     let actionBtn = document.querySelector(".actionBtnGroup");
     actionBtn.classList.remove("active");  
+
+    let attackRes = document.querySelector(".attackResult");
+    attackRes.classList.remove("active");  
 }  
 
 // 인벤토리 온오프 버튼 설정

@@ -469,6 +469,7 @@ function addinven(contentnumber){
     
 }
 
+// 인벤에서 아이템 사용
 function useItem(contentnumber){
         switch (contentnumber) {
             case 1:

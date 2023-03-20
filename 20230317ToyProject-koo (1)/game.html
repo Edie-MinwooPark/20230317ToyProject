@@ -46,73 +46,73 @@
             <div class="item" onclick="useItem(1);">
                 <div class="invenitemtext">체력 물약</div>
                 <div class="invenitemimg"></div>
-                <div class="howmanyitem" id="invenhealthPotion1"></div>
+                <div class="howmanyitem" id="invenhealthPotion"> 보유개수 : 0</div>
             </div>
             <div class="item" onclick="useItem(2);">
                 <div class="invenitemtext">공격력 증가</div>
                 <div class="invenitemimg invenitemimg2"></div>
-                <div class="howmanyitem" id="invenattackPotion1"></div>
+                <div class="howmanyitem" id="invenattackPotion">보유개수 : 0</div>
             </div>
             <div class="item" onclick="useItem(3)">
-                <div class="invenitemtext">방어력 증가</div>
-                <div class="invenitemimg invenitemimg3"></div>
-                <div class="howmanyitem" id="invendefensePotion1"></div>
-            </div>
-            <div class="item" onclick="useItem(4)">
                 <div class="invenitemtext">경험치 증가</div>
                 <div class="invenitemimg invenitemimg4"></div>
-                <div class="howmanyitem" id="invenexpPotion1"></div>
+                <div class="howmanyitem" id="invenexpPotion">보유개수 : 0</div>
+            </div>
+            <div class="item" onclick="useItem(4)">
+                <div class="invenitemtext">방어력 증가</div>
+                <div class="invenitemimg invenitemimg3"></div>
+                <div class="howmanyitem" id="invendefensePotion">보유개수 : 0</div>
             </div>
             <div class="item" onclick="useItem(5)">
-                <div class="invenitemtext">멀티 영양제</div>
+                <div class="invenitemtext">멀티 파워</div>
                 <div class="invenitemimg invenitemimg5"></div>
-                <div class="howmanyitem" id="invenmultiPotion1"></div>
+                <div class="howmanyitem" id="invenmultiPotion">보유개수 : 0</div>
             </div>
             <div class="item" onclick="useItem(6)">
                 <div class="invenitemtext">경험치 대폭증가</div>
                 <div class="invenitemimg invenitemimg6"></div>
-                <div class="howmanyitem" id="invenbigexpPotion1"></div>
+                <div class="howmanyitem" id="invenbigexpPotion">보유개수 : 0</div>
             </div>
         </div>
 
         <!-- 상점 버튼 클릭 시 팝업되는 상점 창 -->
         <div class="shop">
-            <div class="item">
+            <div class="item" onclick="addinven(1)">
                 <div class="shopitemtext">체력 물약</div>
                 <div class="shopitemimg"></div>
                 <div class="shopcash" id="healthPotion" >50</div>
                 <img class="shopcoin" src="./shopimages/coins.png" alt="">
                 <div class="sub_tag">체력 30 증가</div>
             </div>
-            <div class="item">
+            <div class="item" onclick="addinven(2)">
                 <div class="shopitemtext">공격력</div>
                 <div class="shopitemimg shopitemimg2" ></div>
                 <div class="shopcash" id="attackPotion">50</div>
                 <img class="shopcoin" src="./shopimages/coins.png" alt="">
                 <div class="sub_tag">공격력 5 증가</div>
             </div>
-            <div class="item">
+            <div class="item" onclick="addinven(3)">
                 <div class="shopitemtext">경험치</div>
                 <div class="shopitemimg shopitemimg4"></div>
                 <div class="shopcash" id="expPotion">100</div>
                 <img class="shopcoin" src="./shopimages/coins.png" alt="">
                 <div class="sub_tag">경험치 50 증가</div>
             </div>
-            <div class="item">
+            <div class="item" onclick="addinven(4)">
                 <div class="shopitemtext">방어력</div>
                 <div class="shopitemimg shopitemimg3"></div>
                 <div class="shopcash" id="defensePotion">50</div>
                 <img class="shopcoin" src="./shopimages/coins.png" alt="">
                 <div class="sub_tag">방어력 3 증가</div>
             </div>
-            <div class="item">
+            <div class="item" onclick="addinven(5)">
                 <div class="shopitemtext">멀티 파워</div>
                 <div class="shopitemimg shopitemimg5"></div>
                 <div class="shopcash" id="multiPotion">140</div>
                 <img class="shopcoin" src="./shopimages/coins.png" alt="">
                 <div class="sub_tag">공,방,체 증가</div>
             </div>
-            <div class="item">
+            <div class="item" onclick="addinven(6)">
                 <div class="shopitemtext">경험치 ++</div>
                 <div class="shopitemimg shopitemimg6"></div>
                 <div class="shopcash" id="bigexpPotion">999</div>
@@ -177,32 +177,32 @@
             <div class="item" onclick="useItem(1);">
                 <div class="invenitemtext">체력 물약</div>
                 <div class="invenitemimg"></div>
-                <div class="howmanyitem" id="invenhealthPotion"></div>
+                <div class="howmanyitem" id="invenhealthPotion1"></div>
             </div>
             <div class="item" onclick="useItem(2);">
                 <div class="invenitemtext">공격력 증가</div>
                 <div class="invenitemimg invenitemimg2"></div>
-                <div class="howmanyitem" id="invenattackPotion"></div>
+                <div class="howmanyitem" id="invenattackPotion1"></div>
             </div>
             <div class="item" onclick="useItem(3)">
-                <div class="invenitemtext">방어력 증가</div>
-                <div class="invenitemimg invenitemimg3"></div>
-                <div class="howmanyitem" id="invendefensePotion"></div>
-            </div>
-            <div class="item" onclick="useItem(4)">
                 <div class="invenitemtext">경험치 증가</div>
                 <div class="invenitemimg invenitemimg4"></div>
-                <div class="howmanyitem" id="invenexpPotion"></div>
+                <div class="howmanyitem" id="invenexpPotion1"></div>
+            </div>
+            <div class="item" onclick="useItem(4)">
+                <div class="invenitemtext">방어력 증가</div>
+                <div class="invenitemimg invenitemimg3"></div>
+                <div class="howmanyitem" id="invendefensePotion1"></div>
             </div>
             <div class="item" onclick="useItem(5)">
                 <div class="invenitemtext">멀티 영양제</div>
                 <div class="invenitemimg invenitemimg5"></div>
-                <div class="howmanyitem" id="invenmultiPotion"></div>
+                <div class="howmanyitem" id="invenmultiPotion1"></div>
             </div>
             <div class="item" onclick="useItem(6)">
                 <div class="invenitemtext">경험치 대폭증가</div>
                 <div class="invenitemimg invenitemimg6"></div>
-                <div class="howmanyitem" id="invenbigexpPotion"></div>
+                <div class="howmanyitem" id="invenbigexpPotion1"></div>
             </div>
         </div>
     </div>    

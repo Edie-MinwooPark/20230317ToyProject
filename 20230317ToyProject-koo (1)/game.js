@@ -1,10 +1,13 @@
 // 플레이어 기본 정보
 // 순서대로 레벨, 체력, 공격력, 방어력, 경험치
-let player = [1, 120, 15, 5, 0,500];
+let player = [1, 120, 15, 5, 0, 500];
 let hpToNextLevel = 120;
 let atkToNextLevel = 15;
 let defToNextLevel = 5;
 let neededExp = 50;
+
+
+
 // 몬스터 생성 함수
 function createmonster(name, hp, atk, def, gift, imageUrl,wanted){
     this.name = name;
@@ -26,11 +29,11 @@ let monsterProfile = [
 ]
 
 // 몬스터 정보
-let monster1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0],10);
-let monster2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1],15);
-let monster3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2],18);
-let monster4 = new createmonster("trash", 80, 20, 5, 20, monsterProfile[3],23);
-let monster5 = new createmonster("rabbit", 100, 10, 2, 10, monsterProfile[4],30);
+let monster1 = new createmonster("buzz", 80, 10, 2, 10, monsterProfile[0],10);
+let monster2 = new createmonster("alien", 100, 15, 1, 5, monsterProfile[1],15);
+let monster3 = new createmonster("would you", 120, 20, 7, 15, monsterProfile[2],18);
+let monster4 = new createmonster("trash", 150, 20, 30, 9, monsterProfile[3],23);
+let monster5 = new createmonster("rabbit", 200, 10, 40, 20, monsterProfile[4],30);
 
 // 몬스터 배열
 let monster = [monster1, monster2, monster3, monster4, monster5];
@@ -67,6 +70,7 @@ function gamePlaying(){
     }else{
         mainPage.classList.add("active");
     }       
+    
 
     // 페이지 전환 시 인벤토리가 오픈되어 있을 경우 오프
     let gameinvenOnOff = document.querySelector(".gameArea .inven");
@@ -77,15 +81,36 @@ function gamePlaying(){
 
     let shopOnOff = document.querySelector(".shop");
     shopOnOff.classList.remove("active");
+
+    // 전투 화면에서 도망가기 눌렀을 때 프로필 오프
+    let profilePopup = document.querySelector(".profile");
+    profilePopup.classList.remove("active");
+
+    let meImg = document.querySelector(".me");
+    meImg.classList.remove("active");
+    
+    let monImg = document.querySelector(".monster");
+    monImg.classList.remove("active");
+    
+    let matchingBtn = document.querySelector(".matching");
+    matchingBtn.classList.remove("active");    
+    
+    let actionBtn = document.querySelector(".actionBtnGroup");
+    actionBtn.classList.remove("active");  
+
+    let attackRes = document.querySelector(".attackResult");
+    attackRes.classList.remove("active");  
 }  
 
 // 도망가기 버튼 설정
 function gameEscape(){
     // 플레이어 초기화 변수
-    let playerInit = [1, 120, 15, 5];
+    let playerInit = [1, hpToNextLevel, atkToNextLevel, defToNextLevel];
     
     // 플레이어 리셋    
     player[1] = playerInit[1];
+    player[2] = playerInit[2];
+    player[3] = playerInit[3];
     
     // 몬스터 초기화 배열
     let monInit1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
@@ -151,7 +176,7 @@ function gameEscape(){
 
     let attackRes = document.querySelector(".attackResult");
     attackRes.classList.remove("active");  
-}  
+} 
 
 // 인벤토리 온오프 버튼 설정
 function invenOnOff(){
@@ -249,6 +274,7 @@ function faceToMonster(){
 
 // 전투 진행
 function fight(){
+    let count = 1 ;
     let monhp = document.querySelector(".msthp");
     let playerhp = document.querySelector(".hp");
     text = "";  // 프로필 문구 초기화
@@ -261,16 +287,31 @@ function fight(){
     playDemage = "";  // 플레이어 받은 데미지 문구 초기화
     monDemage = "";   // 몬스터 받은 데미지 문구 초기화 
 
+    console.log(playerCri);
+    console.log(monCri);
+
     // 플레이어 공격
     setTimeout(function(){
         if(playerCri >= 5){
-            monsterSelect.hp = monsterSelect.hp - player[2] * 2 + monsterSelect.def;
-            playAtkText = `크리티컬 적용!<br> ${player[2] * 2}`;
-            monDemage = `${player[2] * 2 - monsterSelect.def}`;
+            if(monsterSelect.def >= player[2] * 2){
+                monsterSelect.hp = monsterSelect.hp;
+                playAtkText = `크리티컬 적용!<br> ${player[2] * 2}`;
+                monDemage = `${0}`;
+            }else{
+                monsterSelect.hp = monsterSelect.hp - player[2] * 2 + monsterSelect.def;
+                playAtkText = `크리티컬 적용!<br> ${player[2] * 2}`;
+                monDemage = `${player[2] * 2 - monsterSelect.def}`;
+            }
         }else{
-            monsterSelect.hp = monsterSelect.hp - player[2] + monsterSelect.def;
-            playAtkText = `${player[2]}`;
-            monDemage = `${player[2] - monsterSelect.def}`;
+            if(monsterSelect.def >= player[2]){
+                monsterSelect.hp = monsterSelect.hp;
+                playAtkText = `${player[2]}`;
+                monDemage = `${0}`;
+            }else{
+                monsterSelect.hp = monsterSelect.hp - player[2] + monsterSelect.def;
+                playAtkText = `${player[2]}`;
+                monDemage = `${player[2] - monsterSelect.def}`;
+            }
         }
     
         let playTurn = document.querySelector(".playerTurn");
@@ -287,13 +328,25 @@ function fight(){
             // 몬스터 공격
             setTimeout(function(){
                 if(monCri >= 5){
-                    player[1] = player[1] - monsterSelect.atk * 2 + player[3];      
-                    monAtkText = `크리티컬 적용!<br> ${monsterSelect.atk * 2}`;     
-                    playDemage = `${monsterSelect.atk * 2 - player[3]}`;     
+                    if(player[3] >= monsterSelect.atk * 2){
+                        player[1] = player[1];      
+                        monAtkText = `크리티컬 적용!<br> ${monsterSelect.atk * 2}`;     
+                        playDemage = `${0}`;  
+                    }else{
+                        player[1] = player[1] - monsterSelect.atk * 2 + player[3];      
+                        monAtkText = `크리티컬 적용!<br> ${monsterSelect.atk * 2}`;     
+                        playDemage = `${monsterSelect.atk * 2 - player[3]}`;     
+                    }
                 }else{
-                    player[1] = player[1] - monsterSelect.atk + player[3];
-                    monAtkText = `${monsterSelect.atk}`;  
-                    playDemage = `${monsterSelect.atk - player[3]}`;
+                    if(player[3] >= monsterSelect.atk * 2){
+                        player[1] = player[1];
+                        monAtkText = `${monsterSelect.atk}`;  
+                        playDemage = `${0}`;
+                    }else{
+                        player[1] = player[1] - monsterSelect.atk + player[3];
+                        monAtkText = `${monsterSelect.atk}`;  
+                        playDemage = `${monsterSelect.atk - player[3]}`;                        
+                    }
                 }
         
                 let monTurn = document.querySelector(".monsterTurn");
@@ -347,6 +400,7 @@ function afterFight(){
     }else{
         monsterOut();
     }
+    
 
     setTimeout(function(){
         if(player[1] <= 0){        
@@ -389,8 +443,8 @@ function afterFight(){
         let monInit1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0],10);
         let monInit2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1],15);
         let monInit3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2],18);
-        let monInit4 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[3],23);
-        let monInit5 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[4],30);
+        let monInit4 = new createmonster("trash", 150, 10, 4, 15, monsterProfile[3],23);
+        let monInit5 = new createmonster("rabbit", 150, 10, 4, 15, monsterProfile[4],30);
         let monInit = [monInit1, monInit2, monInit3, monInit4, monInit5];
         
         // 몬스터 리셋
@@ -438,7 +492,6 @@ function afterFight(){
 // 패배 시 이미지 아웃
 function playerOut(){
     let mePhoto = document.querySelector(".me");
-
     mePhoto.classList.add("out");
 
     setTimeout(function(){
@@ -447,107 +500,212 @@ function playerOut(){
 }
 function monsterOut(){
     let monPhoto = document.querySelector(".monster");
-
     monPhoto.classList.add("out");
 
     setTimeout(function(){
         monPhoto.style.opacity = "0";
     }, 500);
 }
+// 상점에서 아이템 누르면 인벤에 보유 개수 올라가는 함수
+let howmany = document.querySelector("#invenhealthPotion")
+let ihowmany = document.querySelector("#invenhealthPotion1")
+let howmany1 = document.querySelector("#invenattackPotion")
+let ihowmany1 = document.querySelector("#invenattackPotion1")
+let howmany2 = document.querySelector("#invenexpPotion")
+let ihowmany2 = document.querySelector("#invenexpPotion1")
+let howmany3 = document.querySelector("#invendefensePotion")
+let ihowmany3 = document.querySelector("#invendefensePotion1")
+let howmany4 = document.querySelector("#invenmultiPotion")
+let ihowmany4 = document.querySelector("#invenmultiPotion1")
+let howmany5 = document.querySelector("#invenbigexpPotion")
+let ihowmany5 = document.querySelector("#invenbigexpPotion1")
 
-// 인벤토리 아이템 보유개수 보여주는 식
+let ea1 = 0
+let ea2 = 0
+let ea3 = 0
+let ea4 = 0
+let ea5 = 0
+let ea6 = 0
 
-document.getElementById('invenhealthPotion').innerHTML = `보유개수 : ${itemcontents.healthpotion}`
-document.getElementById('invenattackPotion').innerHTML = `보유개수 : ${itemcontents.attackpotion}`
-document.getElementById('invendefensePotion').innerHTML = `보유개수 : ${itemcontents.defensepotion}`
-document.getElementById('invenexpPotion').innerHTML = `보유개수 : ${itemcontents.exppotion}`
-document.getElementById('invenmultiPotion').innerHTML = `보유개수 : ${itemcontents.multipotion}`
-document.getElementById('invenbigexpPotion').innerHTML = `보유개수 : ${itemcontents.bigexppotion}`
+let money = document.querySelector(".mainCash")
 
-document.getElementById('invenhealthPotion1').innerHTML = `보유개수 : ${itemcontents.healthpotion}`
-document.getElementById('invenattackPotion1').innerHTML = `보유개수 : ${itemcontents.attackpotion}`
-document.getElementById('invendefensePotion1').innerHTML = `보유개수 : ${itemcontents.defensepotion}`
-document.getElementById('invenexpPotion1').innerHTML = `보유개수 : ${itemcontents.exppotion}`
-document.getElementById('invenmultiPotion1').innerHTML = `보유개수 : ${itemcontents.multipotion}`
-document.getElementById('invenbigexpPotion1').innerHTML = `보유개수 : ${itemcontents.bigexppotion}`
-
-
-// 인벤토리 아이템 클릭시 사용 함수
-
-function useItem(contentnumber){
+function addinven(contentnumber){
     switch (contentnumber) {
         case 1:
-            if(itemcontents.healthpotion >= 1){
-                itemcontents.healthpotion -= 1;
-                document.getElementById('invenhealthPotion').innerHTML = `보유개수 : ${itemcontents.healthpotion}`
-                document.getElementById('invenhealthPotion1').innerHTML = `보유개수 : ${itemcontents.healthpotion}`
-                player[1] += 20;
-                alert('아이템을 사용했습니다');
+            alert('50원을 주고 구입합니다.')
+            if(player[5] <= 50){
+                alert('소지금 부족')
             }else{
-                alert('아이템 갯수가 부족합니다');
+            ea1++
+            player[5] = player[5] -50;
+            console.log(player[5])
+            howmany.innerHTML = ` 보유개수 : ${ea1} `
+            ihowmany.innerHTML = ` 보유개수 : ${ea1} `
+            money.innerHTML = ` 소지금 :${player[5]}`
             }
             break;
         case 2:
-            if(itemcontents.attackpotion >= 1){
-                itemcontents.attackpotion -= 1;
-                document.getElementById('invenattackPotion').innerHTML = `보유개수 : ${itemcontents.attackpotion}`
-                document.getElementById('invenattackPotion1').innerHTML = `보유개수 : ${itemcontents.attackpotion}`
-                player[2] += 5
-                alert('아이템을 사용했습니다');
+            alert('50원을 주고 구입합니다.')
+            if(player[5] <= 50){
+                alert('소지금 부족')
             }else{
-                alert('아이템 갯수가 부족합니다');
+            ea2++
+            player[5] = player[5] -50;
+            howmany1.innerHTML = ` 보유개수 : ${ea2} `
+            ihowmany1.innerHTML = ` 보유개수 : ${ea2} `
+            money.innerHTML = ` 소지금 :${player[5]}`
             }
             break;
         case 3:
-            if(itemcontents.defensepotion >= 1){
-                itemcontents.defensepotion -= 1;
-                document.getElementById('invendefensePotion').innerHTML = `보유개수 : ${itemcontents.defensepotion}`
-                document.getElementById('invendefensePotion1').innerHTML = `보유개수 : ${itemcontents.defensepotion}`
-                player[3] += 3
-                alert('아이템을 사용했습니다');
+            alert('100원을 주고 구입합니다.')
+            if(player[5] <= 100){
+                alert('소지금 부족')
             }else{
-                alert('아이템 갯수가 부족합니다');
+            ea3++
+            player[5] = player[5] -100;
+            howmany2.innerHTML = ` 보유개수 : ${ea3} `
+            ihowmany2.innerHTML = ` 보유개수 : ${ea3} `
+            money.innerHTML = ` 소지금 :${player[5]}`
             }
             break;
         case 4:
-            if(itemcontents.exppotion >= 1){
-                itemcontents.exppotion -= 1;
-                document.getElementById('invenexpPotion').innerHTML = `보유개수 : ${itemcontents.expkpotion}`
-                document.getElementById('invenexpPotion1').innerHTML = `보유개수 : ${itemcontents.expkpotion}`
-                player[4] += 50
-                alert('아이템을 사용했습니다');
+            alert('50원을 주고 구입합니다.')
+            if(player[5] <= 50){
+                alert('소지금 부족')
             }else{
-                alert('아이템 갯수가 부족합니다');
+            ea4++
+            player[5] = player[5] -50;
+            howmany3.innerHTML = ` 보유개수 : ${ea4} `
+            ihowmany3.innerHTML = ` 보유개수 : ${ea4} `
+            money.innerHTML = ` 소지금 :${player[5]}`
             }
             break;
         case 5:
-            if(itemcontents.multipotion >= 1){
-                itemcontents.multipotion -= 1;
-                document.getElementById('invenmultiPotion').innerHTML = `보유개수 : ${itemcontents.multipotion}`
-                document.getElementById('invenmultiPotion1').innerHTML = `보유개수 : ${itemcontents.multipotion}`
-                player[1] += 20;
-                player[2] += 5;
-                player[3] += 3;
-                console.log(player);
-                alert('아이템을 사용했습니다');
+            alert('140원을 주고 구입합니다.')
+            if(player[5] <= 140){
+                alert('소지금 부족')
             }else{
-                alert('아이템 갯수가 부족합니다');
+                ea5++
+                player[5] = player[5] -140;
+                howmany4.innerHTML = ` 보유개수 : ${ea5} `
+                ihowmany4.innerHTML = ` 보유개수 : ${ea5} `
+                money.innerHTML = ` 소지금 :${player[5]}`
             }
-            break;
+                break;
         case 6:
-            if(itemcontents.bigexppotion >= 1){
-                itemcontents.bigexppotion -= 1;
-                document.getElementById('invenbigexpPotion').innerHTML = `보유개수 : ${itemcontents.bigexppotion}`
-                document.getElementById('invenbigexpPotion1').innerHTML = `보유개수 : ${itemcontents.bigexppotion}`
-                player[0] += 1;
-                alert('아이템을 사용했습니다');
-            }else{
-                alert('아이템 갯수가 부족합니다');
+            alert('999원을 주고 구입합니다.')
+            if(player[5] <= 999){
+                alert('소지금 부족')
+            }else {
+                ea6++
+                player[5] = player[5] -990;
+                howmany5.innerHTML = ` 보유개수 : ${ea6} `
+                ihowmany5.innerHTML = ` 보유개수 : ${ea6} `
+                money.innerHTML = ` 소지금 :${player[5]}`
             }
             break;
-      
     
+        default : alert('소지금 부족')
+            break;
     }
+    
 }
 
-console.log(player);
+// 인벤에서 아이템 사용
+let hp = document.querySelector(".mainHp")
+let atk = document.querySelector(".mainAtk")
+let def = document.querySelector(".mainArmor")
+let exp = document.querySelector(".plExp")
+let level = document.querySelector(".plLevel")
+let playerhp = document.querySelector(".hp");
+let playeratk = document.querySelector(".atk");
+let playerdef = document.querySelector(".def");
+
+
+function useItem(contentnumber){
+        switch (contentnumber) {
+            case 1:
+                if(ea1 >= 1 && player[1] < hpToNextLevel ){
+                    alert('아이템을 사용합니다.');
+                    if(player[1]+30 > hpToNextLevel){
+                        player[1] = hpToNextLevel;
+                    }else{
+                        player[1] = player[1] + 30;
+                    }                    
+                    ea1--
+                    howmany.innerHTML = ` 보유개수 ${ea1} `
+                    ihowmany.innerHTML = ` 보유개수 ${ea1} `
+                    hp.innerHTML = `체력 : ${player[1]}`
+                    playerhp.innerHTML = `체력 : ${player[1]}`;
+                }else{
+                    alert('아이템을 사용할 수 없습니다. (아이템 부족 or 최대 체력 초과)');
+                }
+                break;
+            case 2:
+                if(ea2 >= 1){
+                    alert('아이템을 사용합니다.');
+                    player[2] = player[2] + 5;
+                    ea2--
+                    howmany1.innerHTML = ` 보유개수 ${ea2} `;
+                    ihowmany1.innerHTML = ` 보유개수 ${ea2} `;
+                    atk.innerHTML = `공격력 : ${player[2]}`;
+                    playeratk.innerHTML = `공격력 : ${player[2]}`;
+                }else{
+                    alert('아이템 갯수가 부족합니다');
+                }
+                break;
+            case 3:
+                if(ea3 >= 1){
+                    alert('아이템을 사용합니다.');
+                    player[4] = player[4] + 50
+                    ea3--
+                    ihowmany2.innerHTML = ` 보유개수 ${ea3} `
+                     howmany2.innerHTML = ` 보유개수 ${ea3} `
+                     exp.innerHTML = `경험치 : ${player[4]}`
+                }else{
+                    alert('아이템 갯수가 부족합니다');
+                }
+                break;
+            case 4:
+                if(ea4 >= 1){
+                    alert('아이템을 사용합니다.');
+                    player[3] = player[3] + 3
+                    ea4--
+                    howmany3.innerHTML = ` 보유개수 ${ea4} `
+                    ihowmany3.innerHTML = ` 보유개수 ${ea4} `
+                    def.innerHTML = `방어력 : ${player[3]}`
+                    playerdef.innerHTML = `방어력 : ${player[3]}`;
+                }else{
+                    alert('아이템 갯수가 부족합니다');
+                }
+                break;
+            case 5:
+                if(ea5 >= 1){
+                    alert('아이템을 사용합니다.');
+                    player[1] = player[1] + 30;
+                    player[2] = player[2] + 5;
+                    player[3] = player[3] + 3;
+                    ea5--
+                    howmany4.innerHTML = ` 보유개수 ${ea5} `
+                    ihowmany4.innerHTML = ` 보유개수 ${ea5} `
+                    hp.innerHTML = `체력 : ${player[1]}`
+                    atk.innerHTML = `공격력 : ${player[2]}`
+                    def.innerHTML = `방어력 : ${player[3]}`
+                }else{
+                    alert('아이템 갯수가 부족합니다');
+                }
+                break;
+            case 6:
+                if(ea6 >= 1){
+                    alert('아이템을 사용합니다.');
+                    player[0] = player[0] + 1;
+                    ea6--
+                    howmany5.innerHTML = ` 보유개수 ${ea6} `
+                    ihowmany5.innerHTML = ` 보유개수 ${ea6} `
+                    level.innerHTML = `레벨 : ${player[0]}`
+                }else{
+                    alert('아이템 갯수가 부족합니다');
+                }
+                break;
+        }
+    }

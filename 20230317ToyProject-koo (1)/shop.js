@@ -9,7 +9,6 @@ let itemcontents ={
     bigexppotion : 0
 }
 
-
 //내 잔고 보여주는 함수
 function jango(){
     let cashshow = document.getElementById('remainedcash');
@@ -60,4 +59,4 @@ function buyItem (button,itemcontent){
     }
 }
 
-jango();
+// jango();///

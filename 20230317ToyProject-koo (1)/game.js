@@ -113,11 +113,11 @@ function gameEscape(){
     player[3] = playerInit[3];
     
     // 몬스터 초기화 배열
-    let monInit1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
-    let monInit2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1]);
-    let monInit3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2]);
-    let monInit4 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[3]);
-    let monInit5 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[4]);
+    let monInit1 = new createmonster("buzz", 80, 10, 2, 10, monsterProfile[0],10);
+    let monInit2 = new createmonster("alien", 100, 15, 1, 5, monsterProfile[1],15);
+    let monInit3 = new createmonster("would you", 120, 20, 7, 15, monsterProfile[2],18);
+    let monInit4 = new createmonster("trash", 150, 20, 30, 9, monsterProfile[3],23);
+    let monInit5 = new createmonster("rabbit", 200, 10, 40, 20, monsterProfile[4],30);
     let monInit = [monInit1, monInit2, monInit3, monInit4, monInit5];
     
     // 몬스터 리셋

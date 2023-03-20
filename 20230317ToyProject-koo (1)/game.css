@@ -126,9 +126,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: aqua;
+    background-color: rgba(237, 240, 164, 0.541);
     border-radius: 15px;
-    border: 1px solid black;
 }
 .actionBtnGroup.active{
     display: flex;
@@ -155,8 +154,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
-    border: 1px solid black;
+    background-color: rgba(128, 128, 128, 0.719);
     border-radius: 20px;
 }
 
@@ -172,8 +170,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: beige;
-    border: 1px solid black;
+    background-color: rgba(226, 245, 220, 0.623);
     border-radius: 20px;
 }
 .shop.active{

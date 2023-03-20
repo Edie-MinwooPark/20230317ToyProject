@@ -31,7 +31,6 @@ let monster5 = new createmonster("rabbit", 100, 10, 2, 10, monsterProfile[4]);
 // 몬스터 배열
 let monster = [monster1, monster2, monster3, monster4, monster5];
 
-
 // 몬스터 랜덤 인덱스 저장소
 let monRandom;
 
@@ -76,7 +75,7 @@ function gamePlaying(){
     shopOnOff.classList.remove("active");
 }  
 
-
+// 도망가기 버튼 설정
 function gameEscape(){
     // 플레이어 초기화 변수
     let playerInit = [1, 120, 15, 5];

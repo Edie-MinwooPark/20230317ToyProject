@@ -12,7 +12,9 @@
     background-size: 130%;
     opacity: 0.9;
     border-radius: 30px;
-    /* display: none; */
+}
+.homeArea.active{
+    display: none;
 }
 
 /* 메인 화면 플레이어 프로필 설정 */
@@ -23,7 +25,6 @@
     height: 180px;
     background-color: rgba(0, 0, 0, 0.2)
 }
-
 .mainProfile{
     width: 200px;
     height: 160px;
@@ -31,38 +32,28 @@
     background-image: url("./profile_image/player_profile.jpg");
     background-size: cover;
 }
-
 .mainLevel{
     background-color: gray;
     width: 200px;
     height: 20px;
     display: flex;
 }
-
 .mainLevel div{
     padding-left: 5px;
 }
-
 .mainLevel .plLevel{
     width: 70px;
     border-right: 1px solid black;
 }
-
 .playerStatus{
     margin-top: 25px;
 }
-
 .playerStatus div{
     background-color: gray;
     width: 200px;
     height: 25px;
     margin-bottom: 10px;
     margin-left: 40px;
-}
-
-/* 메인 화면 온오프 설정 */
-.homeArea.active{
-    display: none;
 }
 
 /* 홈 버튼 설정 */
@@ -105,8 +96,6 @@
     background-size: 130%;
     border-radius: 30px;
 }
-
-/* 전투 화면 on 시 */
 .gameArea.active{
     display: block;
 }
@@ -122,7 +111,6 @@
     height: 100px;
     font-size: 24px;
 }
-
 .matching.active{
     display: none;
 }
@@ -142,7 +130,6 @@
     border-radius: 15px;
     border: 1px solid black;
 }
-
 .actionBtnGroup.active{
     display: flex;
 }
@@ -189,27 +176,25 @@
     border: 1px solid black;
     border-radius: 20px;
 }
+.shop.active{
+    display: flex;
+}
 
 /* 메인 화면 인벤토리 위치 설정 */
 .homeArea .inven{
     position: absolute;    
     bottom: 150px;
 }
+.homeArea .inven.active{
+    display: flex;
+}
+
 
 /* 전투 화면 인벤토리 위치 설정 */
 .gameArea .inven{
     position: absolute;
     right: 250px;
     bottom: 50px;
-}
-
-/* 인벤토리 온오프 설정 */
-.homeArea .inven.active{
-    display: flex;
-}
-
-.homeArea .shop.active{
-    display: flex;
 }
 
 /* 메인 페이지인벤토리 및 상점 내 아이템 칸 설정 */
@@ -226,11 +211,6 @@
     cursor: pointer;
 }
 
-/* 인벤토리 온오프 설정 */
-.gameArea .inven.active{
-    display: flex;
-}
-
 /* 전투 페이지 인벤토리 내 아이템 설정 */
 .gameArea .inven .item{
     width: 120px;
@@ -243,6 +223,9 @@
     background-color: white;
     position: relative;
     cursor: pointer;
+}
+.gameArea .inven.active{
+    display: flex;
 }
 
 /* 전투 기본 정보 설정 */
@@ -337,7 +320,6 @@
 .me.active, .monster.active{
     display: block;
 }
-
 .me.active{
     background-image: url("./profile_image/player_profile.jpg");
     background-size: cover;
@@ -507,10 +489,10 @@
     font-size: 14px;
     border-radius: 10px;
 }
-
 .item:hover .sub_tag{
     display: block;
 }
+
 /* 체력아이템 이미지 */
 .invenitemimg{
     background-image: url(./shopimages/healthpotion.png);
@@ -541,6 +523,7 @@
 .invenitemimg6{
     background-image: url(./shopimages/exp.png);
 }
+
 /* 아이템 이름명 */
 .invenitemtext{
     text-align: center;

@@ -22,11 +22,11 @@ let monsterProfile = [
 ]
 
 // 몬스터 정보
-let monster1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
-let monster2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1]);
-let monster3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2]);
-let monster4 = new createmonster("trash", 80, 20, 5, 20, monsterProfile[3]);
-let monster5 = new createmonster("rabbit", 100, 10, 2, 10, monsterProfile[4]);
+let monster1 = new createmonster("buzz(Lv.1)", 80, 10, 2, 15, monsterProfile[0]);
+let monster2 = new createmonster("alien(Lv.2)", 100, 15, 5, 20, monsterProfile[1]);
+let monster3 = new createmonster("would you(Lv.3)", 120, 20, 7, 35, monsterProfile[2]);
+let monster4 = new createmonster("trash(Lv.4)", 150, 30, 9, 40, monsterProfile[3]);
+let monster5 = new createmonster("rabbit(Lv.5)", 200, 40, 20, 50, monsterProfile[4]);
 
 // 몬스터 배열
 let monster = [monster1, monster2, monster3, monster4, monster5];
@@ -169,7 +169,7 @@ function faceToMonster(){
 
     monRandom = random;
 
-    monname.innerHTML = `${monsterSelect.name} : 이름`;
+    monname.innerHTML = `${monsterSelect.name}`;
     monhp.innerHTML = `${monsterSelect.hp} : 체력`;
     monatk.innerHTML = `${monsterSelect.atk} : 공격력`;
     mondef.innerHTML = `${monsterSelect.def} : 방어력`; 
@@ -254,7 +254,7 @@ function fight(){
 
 // 체력이 줄었을 때 결과 비교 및 보상
 function afterFight(){
-    if(player[0] <= 0){        
+    if(player[1] <= 0){        
         alert(`패배하셨습니다. 마을로 돌아갑니다...`)
     }else if(monsterSelect.hp <= 0){
         alert(`승리하셨습니다! 마을로 돌아갑니다. \n
@@ -270,13 +270,13 @@ function afterFight(){
     player[1] = playerInit[1];
     
     // 몬스터 초기화 배열
-    let monInit1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
-    let monInit2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1]);
-    let monInit3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2]);
-    let monInit4 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[3]);
-    let monInit5 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[4]);
+    let monInit1 = new createmonster("buzz(Lv.1)", 100, 10, 2, 10, monsterProfile[0]);
+    let monInit2 = new createmonster("alien(Lv.2)", 100, 15, 5, 20, monsterProfile[1]);
+    let monInit3 = new createmonster("would you(Lv.3)", 120, 20, 7, 35, monsterProfile[2]);
+    let monInit4 = new createmonster("trash(Lv.4)", 150, 30, 9, 40, monsterProfile[3]);
+    let monInit5 = new createmonster("rabbit(Lv.5)", 200, 40, 20, 50, monsterProfile[4]);
     let monInit = [monInit1, monInit2, monInit3, monInit4, monInit5];
-    
+
     // 몬스터 리셋
     monster[monRandom] = monInit[monRandom];
 

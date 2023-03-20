@@ -224,6 +224,8 @@
     background-color: white;
     position: relative;    
     cursor: pointer;
+    left: 0;
+    top: 0;
 }
 
 /* 인벤토리 온오프 설정 */
@@ -434,4 +436,11 @@
 
 .item:hover .sub_tag{
     display: block;
+}
+
+.ea{
+    text-align: center;
+    top: 70%;
+    left: 25%;  
+
 }

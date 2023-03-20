@@ -302,3 +302,53 @@ function afterFight(){
     let attackRes = document.querySelector(".attackResult");
     attackRes.classList.remove("active");  
 }
+
+// inner HTMl로 넣으면 되겠네
+// 상점의 아이템을 누르면 이너 아이템으로 디브로 감싼 아이템이 들어가게
+let itemone  = document.querySelector('.itemone')
+let ea = 1
+function addinven(){
+   itemone.innerHTML = `
+   <div class="shopitemtext">체력 물약</div>
+   <div class="shopitemimg"></div>
+   <div> ${ea}</div>`
+   ea ++
+}
+
+let itemtwo  = document.querySelector('.itemtwo')
+function addinven2(){
+    
+    itemtwo.innerHTML = `<div class="shopitemtext">공격력</div>
+    <div class="shopitemimg shopitemimg2" ></div>
+    <div> ${ea}</div>`
+    ea ++
+}
+
+let itemthree  = document.querySelector('.itemthree')
+function addinven3(){
+    itemthree.innerHTML = `<div class="shopitemtext">경험치</div>
+    <div class="shopitemimg shopitemimg4"></div>
+    <div> ${ea}</div>`
+    ea ++
+}
+let itemfour  = document.querySelector('.itemfour')
+function addinven4(){
+    itemfour.innerHTML = `<div class="shopitemtext">방어력</div>
+    <div class="shopitemimg shopitemimg3"></div>
+    <div> ${ea}</div>`
+    ea ++
+}
+let itemfive  = document.querySelector('.itemfive')
+function addinven5(){
+    itemfive.innerHTML = `<div class="shopitemtext">멀티 파워</div>
+    <div class="shopitemimg shopitemimg5"></div>
+    <div> ${ea}</div> `
+    ea ++
+}
+let itemsix  = document.querySelector('.itemsix')
+function addinven6(){
+    itemsix.innerHTML = ` <div class="shopitemtext">경험치 ++</div>
+    <div class="shopitemimg shopitemimg6"></div>
+    <div> ${ea}</div>`
+    ea ++
+}

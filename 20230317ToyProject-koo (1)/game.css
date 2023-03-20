@@ -12,6 +12,7 @@
     background-size: 130%;
     opacity: 0.9;
     border-radius: 30px;
+    /* display: none; */
 }
 
 /* 메인 화면 온오프 설정 */
@@ -170,7 +171,7 @@
     display: flex;
 }
 
-/* 인벤토리 및 상점 내 아이템 칸 설정 */
+/* 메인 페이지인벤토리 및 상점 내 아이템 칸 설정 */
 .homeArea .item{
     width: 120px;
     height: 120px;
@@ -180,6 +181,7 @@
     align-items: center;
     border-radius: 10px;
     background-color: white;
+    position: relative;    
 }
 
 /* 인벤토리 온오프 설정 */
@@ -187,7 +189,7 @@
     display: flex;
 }
 
-/* 인벤토리 내 아이템 설정 */
+/* 전투 페이지 인벤토리 내 아이템 설정 */
 .gameArea .inven .item{
     width: 120px;
     height: 120px;
@@ -197,6 +199,7 @@
     align-items: center;
     border-radius: 10px;
     background-color: white;
+    position: relative;
 }
 
 /* 전투 기본 정보 설정 */
@@ -300,3 +303,75 @@
     background-image: url("./profile_image/player_profile.jpg");
     background-size: cover;
 } 
+
+/* 전투 결과창 기본 설정 */
+.attackResult{
+    width: 250px;
+    height: 220px;
+    display: none;
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+}
+.attackResult.active{
+    display: block;
+}
+.playerTurn, .monsterTurn{
+    width: 230px;
+    height: 100px;
+    margin: 5px;
+}
+.monsterTurn{
+    border-top: 1px solid white;
+    padding: 5px;
+}
+
+/* 상점 내 아이템표기 */
+.shopitemtext{
+    width: 70px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+}
+.shopcoin{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 70%;
+    left: 25%;    
+}
+.shopcash{
+    position: absolute;
+    left: 55%;
+    top: 70%;
+}
+.shopitemimg{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 5px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url(./shopimages/healthpotion.png);
+    background-size: cover;
+}
+.shopitemimg2{
+    background-image: url(./shopimages/attackpower.png);
+}
+.shopitemimg3{
+    background-image: url(./shopimages/defense.png);
+}
+.shopitemimg4, .shopitemimg6{
+    background-image: url(./shopimages/exp.png);
+}
+.shopitemimg5{
+    background-image: url(./shopimages/three.png)
+}

@@ -230,16 +230,35 @@
 
 /* 인벤토리 설정 */
 .inven{
-    width: 500px;
-    height: 500px;
+    width: 440px;
+    height: 305px;
     position: absolute;    
     bottom: 150px;
+    left: 40px;
     padding: auto;
     display: none;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     background-color: aquamarine;
+
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+/* 상점 기본 설정 */
+.shop{
+    width: 440px;
+    height: 305px;
+    position: absolute;    
+    bottom: 150px;
+    right: 40px;
+    padding: auto;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
 
     border: 1px solid black;
     border-radius: 20px;
@@ -263,8 +282,12 @@
     display: flex;
 }
 
-/* 인벤토리 내 아이템 설정 */
-.homeArea .inven .item{
+.homeArea .shop.active{
+    display: flex;
+}
+
+/* 인벤토리 및 상점 내 아이템 칸 설정 */
+.homeArea .item{
     width: 120px;
     height: 120px;
     border: 1px solid black;

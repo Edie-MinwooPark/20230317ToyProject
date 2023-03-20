@@ -1,15 +1,19 @@
 // 플레이어 기본 정보
 // 순서대로 레벨, 체력, 공격력, 방어력, 경험치
-let player = [1, 120, 15, 5, 0];
-
+let player = [1, 120, 15, 5, 0,500];
+let hpToNextLevel = 120;
+let atkToNextLevel = 15;
+let defToNextLevel = 5;
+let neededExp = 50;
 // 몬스터 생성 함수
-function createmonster(name, hp, atk, def, gift, imageUrl){
+function createmonster(name, hp, atk, def, gift, imageUrl,wanted){
     this.name = name;
     this.hp = hp;
     this.atk = atk;
     this.def = def;
     this.gift = gift;
     this.imageUrl = imageUrl;
+    this.wanted = wanted;
 }
 
 // 몬스터 이미지
@@ -22,11 +26,11 @@ let monsterProfile = [
 ]
 
 // 몬스터 정보
-let monster1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
-let monster2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1]);
-let monster3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2]);
-let monster4 = new createmonster("trash", 80, 20, 5, 20, monsterProfile[3]);
-let monster5 = new createmonster("rabbit", 100, 10, 2, 10, monsterProfile[4]);
+let monster1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0],10);
+let monster2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1],15);
+let monster3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2],18);
+let monster4 = new createmonster("trash", 80, 20, 5, 20, monsterProfile[3],23);
+let monster5 = new createmonster("rabbit", 100, 10, 2, 10, monsterProfile[4],30);
 
 // 몬스터 배열
 let monster = [monster1, monster2, monster3, monster4, monster5];
@@ -350,23 +354,43 @@ function afterFight(){
             
         }else if(monsterSelect.hp <= 0){
             alert(`승리하셨습니다! 마을로 돌아갑니다. \n
-            경험치 획득 : ${monsterSelect.gift}`)
-    
+            경험치 획득 : ${monsterSelect.gift} \n
+            포상금 획득 : ${monsterSelect.wanted}`)
             player[4] = player[4] + monsterSelect.gift;
+            player[5] += monsterSelect.wanted;
+            document.querySelector('.plExp').innerHTML = '경험치 : ' + player[4];
+            
+            if(player[4]>= neededExp){
+                alert('레벨업 하였습니다!');
+                player[0] += 1;
+                document.querySelector('.plLevel').innerHTML = "레벨 : " + player[0];
+                hpToNextLevel += 10;
+                atkToNextLevel += 10;
+                defToNextLevel += 3;
+                player[4] = 0;
+                neededExp += 20;
+                document.querySelector('.plExp').innerHTML = "경험치 : " + player[4];
+            }
         }      
         
         // 플레이어 초기화 변수
-        let playerInit = [1, 120, 15, 5];
-    
+        let playerInit = [1, hpToNextLevel, atkToNextLevel, defToNextLevel];
+
         // 플레이어 리셋    
         player[1] = playerInit[1];
+        player[2] = playerInit[2];
+        player[3] = playerInit[3];
+        document.querySelector('.mainHp').innerHTML = "체력 : " + player[1];
+        document.querySelector('.mainAtk').innerHTML = "공격력 : " + player[2];
+        document.querySelector('.mainArmor').innerHTML = "방어력 : " + player[3];
+        document.querySelector('.mainCash').innerHTML = "소지금 : " + player[5];
         
         // 몬스터 초기화 배열
-        let monInit1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
-        let monInit2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1]);
-        let monInit3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2]);
-        let monInit4 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[3]);
-        let monInit5 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[4]);
+        let monInit1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0],10);
+        let monInit2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1],15);
+        let monInit3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2],18);
+        let monInit4 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[3],23);
+        let monInit5 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[4],30);
         let monInit = [monInit1, monInit2, monInit3, monInit4, monInit5];
         
         // 몬스터 리셋

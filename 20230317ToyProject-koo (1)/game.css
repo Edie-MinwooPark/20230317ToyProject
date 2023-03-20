@@ -475,3 +475,8 @@
     padding-top: 5px;
 }
 
+.mephoto{
+    background-image: url("./profile_image/player_profile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

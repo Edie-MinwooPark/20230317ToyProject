@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="./game.css">
 </head>
 <body>
+    <!-- 메인 화면 -->
     <div class="homeArea">
+
+        <!-- 플레이어 프로필 -->
         <div class="status">
             <div class="mainStatus">
                 <div class="mainProfile"></div>
@@ -26,6 +29,7 @@
             </div>
         </div>
 
+        <!-- 메인 화면 버튼 -->
         <div class="homeBtnGroup">
             <button class="gameStart" onclick="gamePlaying();">전투 시작</button>
             <button class="mainInvenBtn" onclick="invenOnOff();">인벤토리 열기</button>
@@ -36,6 +40,8 @@
                 </a>
             </div>
         </div>
+
+        <!-- 인벤토리 버튼 클릭 시 팝업되는 인벤토리 창 -->
         <div class="inven">
             <div class="item" onclick="useItem(1);">
                 <div class="invenitemtext">체력 물약</div>
@@ -68,6 +74,8 @@
                 <div class="howmanyitem" id="invenbigexpPotion1"></div>
             </div>
         </div>
+
+        <!-- 상점 버튼 클릭 시 팝업되는 상점 창 -->
         <div class="shop">
             <div class="item">
                 <div class="shopitemtext">체력 물약</div>
@@ -113,7 +121,11 @@
             </div>
         </div>
     </div>
+
+    <!-- 전투 화면 -->
     <div class="gameArea">
+
+        <!-- 플레이어 및 몬스터 프로필 -->
         <div class = profile>
             <div class="meprofile">
                 <span class = "mephoto"> </span>
@@ -136,25 +148,31 @@
             </div>
         </div>
 
+        <!-- 매 전투 결과 -->
         <div class="attackResult">
             <p class="playerTurn"></p>
             <p class="monsterTurn"></p>
         </div>
 
+        <!-- 플레이어 및 몬스터 이미지 -->
         <div>
             <div class="me"></div>
             <div class="monster"></div>
         </div>
-        
+
+        <!-- 몬스터 매칭 버튼 -->
         <div>
             <button class="matching" onclick="faceToMonster();">몬스터 발견!</button>
         </div>
 
+        <!-- 플레이어 행동 선택 버튼 -->
         <div class="actionBtnGroup">
             <button class="attackBtn" onclick="fight();">공격하기</button>
             <button class="InvenBtn" onclick="invenOnOff();">인벤토리 열기</button>
             <button class="runBtn" onclick="gameEscape();">도망가기</button>
         </div>
+
+        <!-- 전투 화면 내 인벤토리 버튼 클릭 시 인벤토리 창 -->
         <div class="inven">
             <div class="item" onclick="useItem(1);">
                 <div class="invenitemtext">체력 물약</div>
@@ -187,8 +205,7 @@
                 <div class="howmanyitem" id="invenbigexpPotion"></div>
             </div>
         </div>
-    </div>
-    
+    </div>    
 </body>
 <script src="./game.js"></script>
 <script src="./shop.js"></script>

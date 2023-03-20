@@ -37,7 +37,6 @@ let monster5 = new createmonster("rabbit", 200, 10, 40, 20, monsterProfile[4],30
 // 몬스터 배열
 let monster = [monster1, monster2, monster3, monster4, monster5];
 
-
 // 몬스터 랜덤 인덱스 저장소
 let monRandom;
 
@@ -46,6 +45,61 @@ let monsterSelect;
 
 // 화면 on/off 버튼 설정
 function gamePlaying(){
+    //전투 화면 온오프
+    let gamePlaying = document.querySelector(".gameArea");
+
+    if(gamePlaying.classList.contains("active")){
+        gamePlaying.classList.remove("active");
+        document.querySelector('.plLevel').innerHTML = "레벨 : " + player[0];
+        document.querySelector('.plExp').innerHTML = "경험치 : " + player[4];
+
+        document.querySelector('.mainHp').innerHTML = "체력 : " + player[1];
+        document.querySelector('.mainAtk').innerHTML = "공격력 : " + player[2];
+        document.querySelector('.mainArmor').innerHTML = "방어력 : " + player[3];
+        document.querySelector('.mainCash').innerHTML = "소지금 : " + player[5];
+    }else{
+        gamePlaying.classList.add("active");
+    }    
+
+    // 홈 화면 온오프
+    let mainPage = document.querySelector(".homeArea");
+
+    if(mainPage.classList.contains("active")){
+        mainPage.classList.remove("active");
+    }else{
+        mainPage.classList.add("active");
+    }       
+
+    // 페이지 전환 시 인벤토리가 오픈되어 있을 경우 오프
+    let gameinvenOnOff = document.querySelector(".gameArea .inven");
+    gameinvenOnOff.classList.remove("active");
+
+    let maininvenOnOff = document.querySelector(".homeArea .inven");
+    maininvenOnOff.classList.remove("active");
+
+    let shopOnOff = document.querySelector(".shop");
+    shopOnOff.classList.remove("active");
+}  
+
+// 도망가기 버튼 설정
+function gameEscape(){
+    // 플레이어 초기화 변수
+    let playerInit = [1, 120, 15, 5];
+    
+    // 플레이어 리셋    
+    player[1] = playerInit[1];
+    
+    // 몬스터 초기화 배열
+    let monInit1 = new createmonster("buzz", 100, 10, 2, 10, monsterProfile[0]);
+    let monInit2 = new createmonster("alien", 150, 5, 1, 5, monsterProfile[1]);
+    let monInit3 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[2]);
+    let monInit4 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[3]);
+    let monInit5 = new createmonster("would you", 150, 10, 4, 15, monsterProfile[4]);
+    let monInit = [monInit1, monInit2, monInit3, monInit4, monInit5];
+    
+    // 몬스터 리셋
+    monster[monRandom] = monInit[monRandom];
+
     //전투 화면 온오프
     let gamePlaying = document.querySelector(".gameArea");
 

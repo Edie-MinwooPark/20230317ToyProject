@@ -279,6 +279,10 @@
     position: absolute;
     border-radius: 10px;    
 }
+.mephoto{
+    background-image: url("./profile_image/player_profile.jpg");
+    background-size: cover;  
+}
 .monsterphoto{
     right: 0px;    
 }

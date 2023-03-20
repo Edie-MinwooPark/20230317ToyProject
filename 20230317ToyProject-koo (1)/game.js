@@ -103,6 +103,18 @@ function invenOnOff(){
     }   
 }  
 
+// 상점 온오프 버튼
+function shopOnOff(){
+    // 메인 화면에서 상점 온오프
+    let shopOnOff = document.querySelector(".homeArea .shop");
+
+    if(shopOnOff.classList.contains("active")){
+        shopOnOff.classList.remove("active");
+    }else{
+        shopOnOff.classList.add("active");
+    }   
+}  
+
 // 전투 시작 시 몬스터 랜덤 생성 및 플레이어 정보 표시
 function faceToMonster(){
     // 프로필 온

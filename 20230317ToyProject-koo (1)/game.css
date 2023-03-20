@@ -182,6 +182,7 @@
     border-radius: 10px;
     background-color: white;
     position: relative;    
+    cursor: pointer;
 }
 
 /* 인벤토리 온오프 설정 */
@@ -200,6 +201,7 @@
     border-radius: 10px;
     background-color: white;
     position: relative;
+    cursor: pointer;
 }
 
 /* 전투 기본 정보 설정 */
@@ -374,4 +376,21 @@
 }
 .shopitemimg5{
     background-image: url(./shopimages/three.png)
+}
+
+/* 아이템 설명 호버링 */
+.sub_tag{
+    background-color: black;
+    color: white;
+    height: 120px;
+    width: 120px;
+    display: none;
+    text-align: center;
+    line-height: 5.2;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.item:hover .sub_tag{
+    display: block;
 }

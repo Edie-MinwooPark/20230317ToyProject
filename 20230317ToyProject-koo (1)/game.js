@@ -294,7 +294,6 @@ function fight(){
     setTimeout(function(){
         if(playerCri >= 5){
             if(monsterSelect.def >= player[2] * 2){
-                monsterSelect.hp = monsterSelect.hp;
                 playAtkText = `크리티컬 적용!<br> ${player[2] * 2}`;
                 monDemage = `${0}`;
             }else{
@@ -304,7 +303,6 @@ function fight(){
             }
         }else{
             if(monsterSelect.def >= player[2]){
-                monsterSelect.hp = monsterSelect.hp;
                 playAtkText = `${player[2]}`;
                 monDemage = `${0}`;
             }else{
@@ -329,7 +327,6 @@ function fight(){
             setTimeout(function(){
                 if(monCri >= 5){
                     if(player[3] >= monsterSelect.atk * 2){
-                        player[1] = player[1];      
                         monAtkText = `크리티컬 적용!<br> ${monsterSelect.atk * 2}`;     
                         playDemage = `${0}`;  
                     }else{
@@ -339,7 +336,6 @@ function fight(){
                     }
                 }else{
                     if(player[3] >= monsterSelect.atk * 2){
-                        player[1] = player[1];
                         monAtkText = `${monsterSelect.atk}`;  
                         playDemage = `${0}`;
                     }else{

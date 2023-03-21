@@ -628,8 +628,8 @@ function useItem(contentnumber){
                         player[1] = player[1] + 30;
                     }                    
                     ea1--
-                    howmany.innerHTML = ` 보유개수 ${ea1} `
-                    ihowmany.innerHTML = ` 보유개수 ${ea1} `
+                    howmany.innerHTML = ` 보유개수 : ${ea1} `
+                    ihowmany.innerHTML = ` 보유개수 : ${ea1} `
                     hp.innerHTML = `체력 : ${player[1]}`
                     playerhp.innerHTML = `체력 : ${player[1]}`;
                 }else{
@@ -641,8 +641,8 @@ function useItem(contentnumber){
                     alert('아이템을 사용합니다.');
                     player[2] = player[2] + 5;
                     ea2--
-                    howmany1.innerHTML = ` 보유개수 ${ea2} `;
-                    ihowmany1.innerHTML = ` 보유개수 ${ea2} `;
+                    howmany1.innerHTML = ` 보유개수 : ${ea2} `;
+                    ihowmany1.innerHTML = ` 보유개수 : ${ea2} `;
                     atk.innerHTML = `공격력 : ${player[2]}`;
                     playeratk.innerHTML = `공격력 : ${player[2]}`;
                 }else{
@@ -654,8 +654,8 @@ function useItem(contentnumber){
                     alert('아이템을 사용합니다.');
                     player[4] = player[4] + 50
                     ea3--
-                    ihowmany2.innerHTML = ` 보유개수 ${ea3} `
-                    howmany2.innerHTML = ` 보유개수 ${ea3} `
+                    ihowmany2.innerHTML = ` 보유개수 : ${ea3} `
+                    howmany2.innerHTML = ` 보유개수 : ${ea3} `
                     exp.innerHTML = `경험치 : ${player[4]}`
 
                     if(player[4]>= neededExp){
@@ -681,8 +681,8 @@ function useItem(contentnumber){
                     alert('아이템을 사용합니다.');
                     player[3] = player[3] + 3
                     ea4--
-                    howmany3.innerHTML = ` 보유개수 ${ea4} `
-                    ihowmany3.innerHTML = ` 보유개수 ${ea4} `
+                    howmany3.innerHTML = ` 보유개수 : ${ea4} `
+                    ihowmany3.innerHTML = ` 보유개수 : ${ea4} `
                     def.innerHTML = `방어력 : ${player[3]}`
                     playerdef.innerHTML = `방어력 : ${player[3]}`;
                 }else{
@@ -696,8 +696,8 @@ function useItem(contentnumber){
                     player[2] = player[2] + 5;
                     player[3] = player[3] + 3;
                     ea5--
-                    howmany4.innerHTML = ` 보유개수 ${ea5} `
-                    ihowmany4.innerHTML = ` 보유개수 ${ea5} `
+                    howmany4.innerHTML = ` 보유개수 : ${ea5} `
+                    ihowmany4.innerHTML = ` 보유개수 : ${ea5} `
                     hp.innerHTML = `체력 : ${player[1]}`
                     atk.innerHTML = `공격력 : ${player[2]}`
                     def.innerHTML = `방어력 : ${player[3]}`
@@ -711,8 +711,8 @@ function useItem(contentnumber){
                     alert('레벨업 하였습니다!');
                     player[0] = player[0] + 1;
                     ea6--
-                    howmany5.innerHTML = ` 보유개수 ${ea6} `
-                    ihowmany5.innerHTML = ` 보유개수 ${ea6} `
+                    howmany5.innerHTML = ` 보유개수 : ${ea6} `
+                    ihowmany5.innerHTML = ` 보유개수 : ${ea6} `
                     level.innerHTML = `레벨 : ${player[0]}`
                     hpToNextLevel += 10;
                     atkToNextLevel += 10;

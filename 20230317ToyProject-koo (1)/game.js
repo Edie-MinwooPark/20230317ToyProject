@@ -267,9 +267,9 @@ function faceToMonster(){
     let playerdef = document.querySelector(".def");
 
     playername.innerHTML = `플레이어 : ${player[0]} 레벨`;
-    playerhp.innerHTML = `체력 : ${player[1]}`;
-    playeratk.innerHTML = `공격력 : ${player[2]}`;
-    playerdef.innerHTML = `방어력 : ${player[3]}`;
+    playerhp.innerHTML = `체력 : ${hpToNextLevel}`;
+    playeratk.innerHTML = `공격력 : ${atkToNextLevel}`;
+    playerdef.innerHTML = `방어력 : ${defToNextLevel}`;
 }
 
 // 전투 진행
@@ -656,8 +656,23 @@ function useItem(contentnumber){
                     player[4] = player[4] + 50
                     ea3--
                     ihowmany2.innerHTML = ` 보유개수 ${ea3} `
-                     howmany2.innerHTML = ` 보유개수 ${ea3} `
-                     exp.innerHTML = `경험치 : ${player[4]}`
+                    howmany2.innerHTML = ` 보유개수 ${ea3} `
+                    exp.innerHTML = `경험치 : ${player[4]}`
+
+                    if(player[4]>= neededExp){
+                        alert('레벨업 하였습니다!');
+                        player[0] += 1;
+                        document.querySelector('.plLevel').innerHTML = "레벨 : " + player[0];
+                        hpToNextLevel += 10;
+                        atkToNextLevel += 10;
+                        defToNextLevel += 3;
+                        player[4] = 0;
+                        neededExp += 20;
+                        document.querySelector('.plExp').innerHTML = "경험치 : " + player[4];
+                        document.querySelector('.mainHp').innerHTML = "체력 : " + hpToNextLevel;
+                        document.querySelector('.mainAtk').innerHTML = "공격력 : " + atkToNextLevel;
+                        document.querySelector('.mainArmor').innerHTML = "방어력 : " + defToNextLevel;
+                    }
                 }else{
                     alert('아이템 갯수가 부족합니다');
                 }
@@ -694,11 +709,21 @@ function useItem(contentnumber){
             case 6:
                 if(ea6 >= 1){
                     alert('아이템을 사용합니다.');
+                    alert('레벨업 하였습니다!');
                     player[0] = player[0] + 1;
                     ea6--
                     howmany5.innerHTML = ` 보유개수 ${ea6} `
                     ihowmany5.innerHTML = ` 보유개수 ${ea6} `
                     level.innerHTML = `레벨 : ${player[0]}`
+                    hpToNextLevel += 10;
+                    atkToNextLevel += 10;
+                    defToNextLevel += 3;
+                    player[4] = 0;
+                    neededExp += 20;
+                    document.querySelector('.plExp').innerHTML = "경험치 : " + player[4];
+                    document.querySelector('.mainHp').innerHTML = "체력 : " + hpToNextLevel;
+                    document.querySelector('.mainAtk').innerHTML = "공격력 : " + atkToNextLevel;
+                    document.querySelector('.mainArmor').innerHTML = "방어력 : " + defToNextLevel;
                 }else{
                     alert('아이템 갯수가 부족합니다');
                 }

@@ -274,7 +274,6 @@ function faceToMonster(){
 
 // 전투 진행
 function fight(){
-    let count = 1 ;
     let monhp = document.querySelector(".msthp");
     let playerhp = document.querySelector(".hp");
     text = "";  // 프로필 문구 초기화

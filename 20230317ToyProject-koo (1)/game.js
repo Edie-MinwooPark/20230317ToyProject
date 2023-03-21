@@ -436,11 +436,11 @@ function afterFight(){
         document.querySelector('.mainCash').innerHTML = "소지금 : " + player[5];
         
         // 몬스터 초기화 배열
-        let monInit1 = new createmonster("페이스 허거 LV.1", 80, 10, 2, 10, monsterProfile[0],10);
-        let monInit2 = new createmonster("네오모프 LV.2", 100, 15, 1, 5, monsterProfile[1],15);
+        let monInit1 = new createmonster("페이스 허거 LV.1", 80, 10, 2, 15, monsterProfile[0],10);
+        let monInit2 = new createmonster("네오모프 LV.2", 100, 15, 1, 15, monsterProfile[1],15);
         let monInit3 = new createmonster("디컨 LV.3", 120, 20, 7, 15, monsterProfile[2],18);
-        let monInit4 = new createmonster("제오모프 LV.4", 150, 22, 4, 15, monsterProfile[3],23);
-        let monInit5 = new createmonster("미확인 물체 LV.5", 150, 30, 4, 15, monsterProfile[4],30);
+        let monInit4 = new createmonster("제오모프 LV.4", 150, 22, 30, 9, monsterProfile[3],23);
+        let monInit5 = new createmonster("미확인 물체 LV.5", 200, 30, 40, 20, monsterProfile[4],30);
         let monInit = [monInit1, monInit2, monInit3, monInit4, monInit5];
         
         // 몬스터 리셋
